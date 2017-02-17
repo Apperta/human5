@@ -27,11 +27,11 @@ angular.module('app.routes', ['ionicUIRouter'])
     url: '/page2',
     views: {
       'tab1': {
-        templateUrl: 'templates/setGoals.html',
+        templateUrl: 'templates/goalsCtrl/setGoals.html',
         controller: 'setGoalsCtrl'
       },
       'tab5': {
-        templateUrl: 'templates/setGoals.html',
+        templateUrl: 'templates/goalsCtrl/setGoals.html',
         controller: 'setGoalsCtrl'
       }
     }
@@ -41,7 +41,7 @@ angular.module('app.routes', ['ionicUIRouter'])
     url: '/page3',
     views: {
       'tab2': {
-        templateUrl: 'templates/statistics.html',
+        templateUrl: 'templates/statisticCtrl/statistics.html',
         controller: 'statisticsCtrl'
       }
     }
@@ -51,7 +51,7 @@ angular.module('app.routes', ['ionicUIRouter'])
     url: '/page4',
     views: {
       'tab3': {
-        templateUrl: 'templates/profile.html',
+        templateUrl: 'templates/settingCtrl/profile.html',
         controller: 'profileCtrl'
       }
     }
@@ -65,13 +65,13 @@ angular.module('app.routes', ['ionicUIRouter'])
 
   .state('login', {
     url: '/page5',
-    templateUrl: 'templates/login.html',
+    templateUrl: 'templates/regCtrl/login.html',
     controller: 'loginCtrl'
   })
 
   .state('signup', {
     url: '/page6',
-    templateUrl: 'templates/signup.html',
+    templateUrl: 'templates/regCtrl/signup.html',
     controller: 'signupCtrl'
   })
 
@@ -79,7 +79,7 @@ angular.module('app.routes', ['ionicUIRouter'])
     url: '/page8',
     views: {
       'tab1': {
-        templateUrl: 'templates/tH5.html',
+        templateUrl: 'templates/th5Ctrl/tH5.html',
         controller: 'tH5Ctrl'
       }
     }
@@ -89,7 +89,7 @@ angular.module('app.routes', ['ionicUIRouter'])
     url: '/page9',
     views: {
       'tab1': {
-        templateUrl: 'templates/performance.html',
+        templateUrl: 'templates/th5Ctrl/performance.html',
         controller: 'performanceCtrl'
       }
     }
@@ -97,7 +97,7 @@ angular.module('app.routes', ['ionicUIRouter'])
 
   .state('sWSW', {
     url: '/page10',
-    templateUrl: 'templates/sWSW.html',
+    templateUrl: 'templates/th5Ctrl/sWSW.html',
     controller: 'sWSWCtrl'
   })
 
@@ -124,11 +124,11 @@ angular.module('app.routes', ['ionicUIRouter'])
     url: '/page13',
     views: {
       'tab1': {
-        templateUrl: 'templates/goals.html',
+        templateUrl: 'templates/goalsCtrl/goals.html',
         controller: 'goalsCtrl'
       },
       'tab5': {
-        templateUrl: 'templates/goals.html',
+        templateUrl: 'templates/goalsCtrl/goals.html',
         controller: 'goalsCtrl'
       }
     }
@@ -138,7 +138,7 @@ angular.module('app.routes', ['ionicUIRouter'])
     url: '/page12',
     views: {
       'tab3': {
-        templateUrl: 'templates/settings.html',
+        templateUrl: 'templates/settingCtrl/settings.html',
         controller: 'settingsCtrl'
       }
     }
@@ -148,7 +148,7 @@ angular.module('app.routes', ['ionicUIRouter'])
     url: '/page14',
     views: {
       'tab1': {
-        templateUrl: 'templates/wEMWBS.html',
+        templateUrl: 'templates/th5Ctrl/wEMWBS.html',
         controller: 'wEMWBSCtrl'
       }
     }
