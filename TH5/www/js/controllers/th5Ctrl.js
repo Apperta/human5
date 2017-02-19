@@ -1,8 +1,17 @@
-myapp.controller('th5Ctrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+myapp.controller('th5Ctrl', ['$scope', '$state', '$stateParams',
+  function ($scope, $state, $stateParams)
+  {
+    $scope.thfRate = function()
+    {
+      console.log($scope.firstValue + " " + $scope.secondValue + " " + $scope.thirdValue + " " + $scope.fourthValue + " " + $scope.fifthValue);
+      // $cordovaFile.writeFile( 'file.txt', $scope.firstValue, {'append':true} ).then( function(result) {
+      // Success!
+      // }, function(err)
+      // {
+      //   // An error occured. Show a message to the user
+      // });
+    }
 
 
-}])
-   
+  }])
+

@@ -1,58 +1,63 @@
 <ion-view title="TH5" id="page8">
   <ion-content padding="true" class="has-header">
-    <form id="tH5-form5" class="list">
-      <label class="item item-select" id="tH5-select2">
-        <span class="input-label">Mind</span>
-        <select>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </label>
-      <label class="item item-select" id="tH5-select7">
-        <span class="input-label">Movement</span>
-        <select>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </label>
-      <label class="item item-select" id="tH5-select8">
-        <span class="input-label">Nutrition</span>
-        <select>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </label>
-      <label class="item item-select" id="tH5-select9">
-        <span class="input-label">World</span>
-        <select>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </label>
-      <label class="item item-select" id="tH5-select10">
-        <span class="input-label">Body</span>
-        <select>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </label>
-      <a ui-sref="home.performance" id="tH5-button5" class="button button-balanced  button-block">Save</a>
-    </form>
-    <div id="tH5-button-bar1" class="button-bar"></div>
+    <div ng-controller="th5Ctrl">
+      <form id="tH5-form5" class="list" ng-submit="thfRate()">
+        <label class="item item-select" id="tH5-select2">
+          <span class="input-label">Mind</span>
+          <select ng-model="firstValue">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </label>
+
+        <label class="item item-select" id="tH5-select7">
+          <span class="input-label">Movement</span>
+          <select ng-model="secondValue">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </label>
+        <label class="item item-select" id="tH5-select8">
+          <span class="input-label">Nutrition</span>
+          <select ng-model="thirdValue">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </label>
+        <label class="item item-select" id="tH5-select9">
+          <span class="input-label">World</span>
+          <select ng-model="fourthValue">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </label>
+        <label class="item item-select" id="tH5-select10">
+          <span class="input-label">Body</span>
+          <select ng-model="fifthValue">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </label>
+        <button type="submit" style= "border-radius:10px;background-color:deepskyblue;color:white;" class = "button   button-block">Log in</button>
+        <a ui-sref="home.performance" id="tH5-button5" class="button button-positive  button-block">Save</a>
+      </form>
+      <div id="tH5-button-bar1" class="button-bar"></div>
+    </div>
+
   </ion-content>
 </ion-view>

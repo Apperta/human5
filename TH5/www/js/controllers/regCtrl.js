@@ -1,7 +1,29 @@
-myapp.controller('regCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+myapp.controller('regCtrl', ['$scope', '$state', '$stateParams',
+  function ($scope, $state, $stateParams)
+  {
+    $scope.badLogin = true;
+    login = function (userVal, passVal)
+    {   //TODO make the post to the server with userVal and passVal
+        var checkGoodLogin = 1; //post to server and get the response in this
 
+        //todo not always working the second part of the if
+        if(checkGoodLogin == 1 && passVal != "")
+        {
+          return true;
+        }
+        return false;
+    }
 
+  $scope.formSubmit = function()
+  {
+    console.log($scope.username + " " + $scope.password);
+    if(login($scope.username, $scope.password) == true)
+    {
+      $state.go('home.tH5');
+    }
+    else
+    {
+      $scope.badLogin = false;
+    }
+  }
 }])
