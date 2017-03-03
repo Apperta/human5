@@ -1,6 +1,6 @@
 <ion-view title="Set Goals" id="page2">
   <ion-content padding="true" class="has-header">
-    <div class="item item-body" id="setGoals-list-item-container1">
+    <div class="item item-body" id="setGoals-list-item-container1" ng-controller="goalsCtrl">
       <form id="setGoals-form4" class="list">
         <label class="item item-select" id="setGoals-select1">
           <span class="input-label">Catogory</span>
@@ -21,6 +21,12 @@
             <option>Other - specify</option>
           </select>
         </label>
+
+        <div id="otherType" >
+        <label for="specify">Specify</label>
+        <input type="text" name="specify" placeholder="Specify what you need to do..." ng-model="formTodoText" />
+        </div>
+
         <label class="item item-select" id="setGoals-select12">
           <span class="input-label">Deadline</span>
           <select>
@@ -31,7 +37,7 @@
             <option>06.01.17</option>
           </select>
         </label>
-        <ion-toggle toggle-class="toggle-positive" id="setGoals-toggle2">Add to Group</ion-toggle>
+        <ion-toggle toggle-class="toggle-positive" id="setGoals-toggle2" ng-click="addTodo()">Add to Group</ion-toggle>
       </form>
     </div>
     <a ui-sref="home.goals" id="setGoals-button4" class="button button-balanced  button-block">Save</a>

@@ -6,7 +6,7 @@
     <title></title>
 
     
-    
+ 
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
@@ -21,6 +21,7 @@
     
 
     <style type="text/css">
+
       .platform-ios .manual-ios-statusbar-padding{
         padding-top:20px;
       }
@@ -47,8 +48,91 @@
         list-style-type: decimal;
         padding-left:40px;
       }
+      @import "compass/css3";
+
+
+.todo-wrapper {
+  background: #55B6AE;
+  width: 100%;
+}
+
+h2 {
+  font-size: 2em;
+  
+  font-family: megrim, fantasy;
+  padding: 40px;
+  margin: 0;
+  color: #333;
+  text-align: center;
+ }
+.emphasis {
+  font-family: vast-shadow, sans-serif;
+  font-size: 3em;
+}
+
+ul {
+  padding: 0px;
+  margin: 0px;
+}
+
+li {
+  font-family: megrim, fantasy;
+  font-size: 1.5em;
+  padding: 40px;
+  
+/*  background: #65d8cb; 
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#65d8cb), to(#72f4e9));
+  background: -webkit-linear-gradient(#65d8cb 0%, #72f4e9 100%);
+  background: -moz-linear-gradient(#65d8cb 0%, #72f4e9 100%);
+  background: -o-linear-gradient(#65d8cb 0%, #72f4e9 100%);
+  background: linear-gradient(#65d8cb 0%, #72f4e9 100%);*/
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#65d8cb', endColorstr='#72f4e9',GradientType=0 );
+  list-style-type: none;
+  margin-left: 0px;
+  padding-left: 10px;
+}
+
+li input[type="checkbox"] {
+  width: 40px;
+}
+
+.done-true {
+  text-decoration: line-through;
+  color: #ddd;
+}
+
+.add-input {
+  width: 60%;
+  height: 20px;
+  float: left;
+  border: none;
+  margin: 40px 10px;
+  font-size: 2em;
+  font-family: megrim, fantasy;
+  text-indent: 55px;
+}
+
+h2 {
+   padding: 0;
+   font-family: megrim, fantasy;
+   color: #333;
+  }
+}
+
+.clear-btn {
+  width: 100%;
+  border: none;
+  height: 100px;
+  background: #13756D;
+  font-size: 2em;
+  font-family: megrim, fantasy;
+  color: #aaa;
+}
     </style>
 
+  <!--   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://use.fontawesome.com/ea51745200.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers/goalsCtrl.js"></script>
     <script src="js/controllers/regCtrl.js"></script>
@@ -65,7 +149,6 @@
 
     
     <script src="lib/ionicuirouter/ionicUIRouter.js"></script>
-    
 
   </head>
   <body ng-app="app" animation="slide-left-right-ios7">
