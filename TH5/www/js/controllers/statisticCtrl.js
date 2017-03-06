@@ -4,6 +4,7 @@ myapp.controller('statisticCtrl', ['$scope', '$stateParams', // The following is
 function ($scope, $stateParams) {
 	// var Highcharts = require('highcharts');
 
+	// The Human Five Chart
 	$(function(){
 		$('#columnCanvas').highcharts({
 			chart: {
@@ -29,6 +30,7 @@ function ($scope, $stateParams) {
 					}
 				}
 			},
+			// Design description on the chart
 			legend: {
 				align: 'right',
 				x: 0,
@@ -40,6 +42,7 @@ function ($scope, $stateParams) {
 				borderWidth: 0.5,
 				shadow: true
 			},
+			// Description displayed when graph (bar) is clicked
 			tooltip: {
 				headerFormat: '<b>{point.x}</b><br/>',
 				pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
@@ -53,6 +56,7 @@ function ($scope, $stateParams) {
 					}
 				}
 			},
+
 			series: [{
 				name: 'Mind',
 				data: [5, 5, 5, 5, 5]
@@ -72,6 +76,7 @@ function ($scope, $stateParams) {
 		});
 	})
 
+	// Y-Axis Values for Performance
 	var performanceValues = {
 
 		1: 'Inefficient',
@@ -81,7 +86,9 @@ function ($scope, $stateParams) {
 		5: 'Efficicent'
 	};
 
+	// Y-Axis Values for Stress
 	var stressLevels = {
+
 		1: 'Too Low',
 		2: 'Low',
 		3: 'Optimum',
@@ -89,6 +96,7 @@ function ($scope, $stateParams) {
 		5: 'Too High'
 	};
 
+	// Yerkes Dodson Curve Graph
 	$(function(){
 		$('#areaCanvas').highcharts({
 			chart: {
@@ -106,6 +114,7 @@ function ($scope, $stateParams) {
 					style: {
 						color: Highcharts.getOptions().colors[1]
 					},
+					// Matches the custom Y-Axis Values from stressLevels
 					formatter: function() {
 						var StressValue = stressLevels[this.value];
 						return StressValue !== 'undefined' ? StressValue : this.value;
@@ -117,6 +126,7 @@ function ($scope, $stateParams) {
 						color: Highcharts.getOptions().colors[1]
 					}
 				},
+
 				max: 5
 			}, { // Secondary yAxis
 				title: {
@@ -128,6 +138,7 @@ function ($scope, $stateParams) {
 				max: 5,
 
 				labels: {
+					// Matches the custom Y-Axis Values from performanceValues
 					formatter: function() {
 						var performanceValue = performanceValues[this.value];
 						return performanceValue !== 'undefined' ? performanceValue : this.value;
@@ -136,11 +147,14 @@ function ($scope, $stateParams) {
 						color: Highcharts.getOptions().colors[0]
 					}
 				},
+				// The 2 y-axis are displayed on different ends
 				opposite: true
 			}],
+			// Description displayed when graph (line or bar) is clicked is common for both data sets
 			tooltip: {
 				shared: true
 			},
+			// Design description on the chart
 			legend: {
 				layout: 'vertical',
 				align: 'left',
@@ -164,11 +178,7 @@ function ($scope, $stateParams) {
 		});
 	})
 
-
-
-
-
-
+	// Warwick Edinburgh Stress Performance Curve Graph
 	$(function(){
 		$('#lineCanvas').highcharts({
 			chart: {
@@ -186,7 +196,6 @@ function ($scope, $stateParams) {
 			}],
 			yAxis: [{ // Primary yAxis
 				labels: {
-					// format: '{value}°C',
 					style: {
 						color: Highcharts.getOptions().colors[1]
 					}
@@ -199,9 +208,11 @@ function ($scope, $stateParams) {
 				},
 				max: 35,
 			}],
+			// Description displayed when graph (line or bar) is clicked
 			tooltip: {
 				shared: true
 			},
+			// Design description on the chart
 			legend: {
 				layout: 'vertical',
 				align: 'left',
@@ -223,5 +234,4 @@ function ($scope, $stateParams) {
 			}]
 		});
 	})
-
 }])
