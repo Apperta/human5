@@ -4,7 +4,7 @@
       <form id="setGoals-form4" class="list">
         <label class="item item-select" id="setGoals-select1">
           <span class="input-label">Catogory</span>
-          <select>
+          <select ng-model="catogory" ng-change="showCato(catogory)">
             <option>Mind</option>
             <option>Body</option>
             <option>Movement</option>
@@ -12,34 +12,16 @@
             <option>World</option>
           </select>
         </label>
-        <label class="item item-select" id="setGoals-select11">
-          <span class="input-label">Description</span>
-          <select>
-            <option>Hiking</option>
-            <option>Tea with Friends</option>
-            <option>Fitness</option>
-            <option>Other - specify</option>
-          </select>
-        </label>
-
-        <div id="otherType" >
-        <label for="specify">Specify</label>
-        <input type="text" name="specify" placeholder="Specify what you need to do..." ng-model="formTodoText" />
-        </div>
-
-        <label class="item item-select" id="setGoals-select12">
+         <label class="item item-input" id="todo-input" style="margin-top: 10px;">
           <span class="input-label">Deadline</span>
-          <select>
-            <option>09.12.16</option>
-            <option>16.12.16</option>
-            <option>23.12.16</option>
-            <option>30.12.16</option>
-            <option>06.01.17</option>
-          </select>
+          </label>
+        <label class="myCalendar" id="myCalendar-1">
+          <input class="myInput" id="myDatePicker-1" data-lang="en" data-years="1995-2022" data-sundayfirst="false" /> 
         </label>
         <ion-toggle toggle-class="toggle-positive" id="setGoals-toggle2" ng-click="addTodo()">Add to Group</ion-toggle>
+
+         <button class="button button-balanced button-block add-btn" ng-click="addDetail()">Save</button>
       </form>
     </div>
-    <a ui-sref="home.goals" id="setGoals-button4" class="button button-balanced  button-block">Save</a>
   </ion-content>
 </ion-view>

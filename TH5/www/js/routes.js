@@ -24,7 +24,7 @@ angular.module('app.routes', ['ionicUIRouter'])
       /page1/tab5/page2
   */
   .state('home.setGoals', {
-    url: '/page2',
+    url: '/page2/:index',
     views: {
       'tab1': {
         templateUrl: 'templates/goalsCtrl/setGoals.html',
@@ -122,6 +122,7 @@ angular.module('app.routes', ['ionicUIRouter'])
   */
   .state('home.goals', {
     url: '/page13',
+    cache: false,
     views: {
       'tab1': {
         templateUrl: 'templates/goalsCtrl/goals.html',

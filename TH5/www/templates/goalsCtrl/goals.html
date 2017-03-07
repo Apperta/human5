@@ -5,20 +5,33 @@
     <div ng-controller="goalsCtrl">
         <h2>You've got <span class="emphasis">{{getTotalTodos()}}</span> things to do</h2>
           <ul>
-            <li ng-repeat="todo in todos">
-<!--               <input type="checkbox" ng-model="todo.done"/>
- -->        <button class="button" data-ng-click="removeItem($index)" style="position:absolute; right:15px;">
+            <li ng-repeat="todo in todos">       
+            <span class="done-{{todo.done}}">{{todo.text}}<br>{{todo.deadline}}</span>
+            <a ui-sref="home.setGoals" id="goals-button6">
+            </a>
+             <button class="button" data-ng-click="goSetGoals($index)" style="position:absolute; right:70px;">
+            <i class="fa fa-pencil-square-o" aria-hidden=           "true"></i>
+            </button>
+            <button class="button" data-ng-click="removeItem($index)" style="position:absolute; right:15px;">
             <i class="fa fa-check" aria-hidden=           "true"></i>
             </button>
-            <span class="done-{{todo.done}}">{{todo.text}}</span>
             </li>
           </ul>
 
+         <!--  <ion-checkbox ng-model="todo.Checked" ng-repeat="todo in todos" >
+          <span class="done-{{todo.done}}" data-ng-bind="todo.text">{{todo.text}}+{{todo.deadline}}</span>
+
+          </ion-checkbox> -->
       <form>
+      <label class="item item-input" id="todo-input" style="margin-top: 10px;">
         <input class="add-input" placeholder="I need to..." type="text" ng-model="formTodoText" ng-model-instant />
+      </label>
         <button class="button button-balanced button-block add-btn" ng-click="addTodo()">Add</button>
       </form>
-<!--       <button class="button clear-btn" ng-click="clearCompleted()">Clear completed</button> -->
+      <button class="button button-stable button-block clear-btn" ng-click="clearCompleted()" value="Delete">Clear completed</button>
+     <!--  <button class="button" data-ng-click="goSetGoals($index)" style="position:absolute; right:70px;">
+            <i class="fa fa-pencil-square-o" aria-hidden=           "true"></i>
+            </button> -->
     <!--   <button class="button button-block clear-btn" data-ng-click="removeItem($index)">Remove</button> -->
     </div>
     
