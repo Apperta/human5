@@ -2,38 +2,37 @@ myapp.controller('goalsCtrl', ['$scope', '$state','$stateParams', // The followi
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $state, $localStorage, $stateParams) {
+   $scope.todos = ([{text:'Hiking', type: 'Movement', deadline: '09 Sep 2017', done:false},         
+     {text: 'Afternoon tea', type: 'World', deadline: '10 Oct 2017',done:false}]);
+      // console.log($scope.todos[0]);
 
-   $scope.todos = [
-     {text:'Hiking', type: 'Movement', deadline: '09 Sep 2017', done:false},         
-     {text: 'Afternoon tea', type: 'World', deadline: '10 Oct 2017',done:false}
-   ];
+   $localStorage.todolist = $scope.todos;
 
     $scope.getTotalTodos = function () {
+    	    console.log($scope.todos);
     return $scope.todos.length;
+
    };
  	$scope.addTodo = function () {
-    $scope.todos.push({text:$scope.formTodoText, done:false});
+    $scope.todos.push({
+    	text:$scope.formTodoText,
+    	done:false
+    });
     $scope.formTodoText = '';
+
+    $localStorage.todolist = $scope.todos;
+       console.log($localStorage.todolist[2].text);
 
   };
  
-   //  $localStorage.test = "kkk";
-   // console.log($localStorage.test);
+    $localStorage.test = "kkk";
+    console.log($localStorage.test);
+   console.log($localStorage.todolist[0].text);
 
     $scope.removeItem = function(index){
     $scope.todos.splice(index, 1);
+    $localStorage.todolist = $scope.todos;
   }
-    $scope.clearCompleted = function(){
-    	var i = $scope.todos.length;
-    	//reversed loop
-    	while(i--){
-    		var todo = $scope.todos[i];
-    		//if todo is checked, remove
-    		if (todo.Checked) {
-    			$scope.todos.splice(i,1);
-    		}
-    	}
-    }
 
     $scope.goSetGoals = function(index){
     	$state.go('home.setGoals', {index:index});

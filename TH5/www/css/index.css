@@ -1,3 +1,13 @@
+.add-input {
+  width: 60%;
+  height: 20px;
+  float: left;
+  border: none;
+  margin: 40px 10px;
+  font-size: 2em;
+  font-family: megrim, fantasy;
+  text-indent: 55px;
+}
 
 .todo-wrapper {
   background: #55B6AE;
@@ -22,7 +32,7 @@ h2 {
  }
 .emphasis {
   font-family: vast-shadow, sans-serif;
-  font-size: 3em;
+  font-size: 2.5em;
 }
 
 ul {
@@ -31,7 +41,7 @@ ul {
 }
 
 li {
-  font-family: megrim, fantasy;
+  font-family: fantasy;
   font-size: 1.2em;
   padding: 20px;
   
@@ -54,17 +64,6 @@ li input[type="checkbox"] {
 .done-true {
   text-decoration: line-through;
   color: #ddd;
-}
-
-.add-input {
-  width: 60%;
-  height: 20px;
-  float: left;
-  border: none;
-  margin: 40px 10px;
-  font-size: 2em;
-  font-family: megrim, fantasy;
-  text-indent: 55px;
 }
 
 h2 {
