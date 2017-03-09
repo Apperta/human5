@@ -1,5 +1,5 @@
-myapp.controller('regCtrl', ['$scope', '$state', '$stateParams',
-  function ($scope, $state, $stateParams)
+myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
+  function ($scope, $state, $stateParams,$localStorage)
   {
     $scope.badLogin = true;
     login = function (userVal, passVal)
@@ -25,5 +25,9 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams',
     {
       $scope.badLogin = false;
     }
+
   }
+
+ 
+
 }])

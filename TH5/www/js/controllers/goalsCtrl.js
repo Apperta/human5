@@ -1,12 +1,15 @@
-myapp.controller('goalsCtrl', ['$scope', '$state','$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+myapp.controller('goalsCtrl', ['$scope', '$state','$stateParams','$localStorage', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $state, $localStorage, $stateParams) {
-   $scope.todos = ([{text:'Hiking', type: 'Movement', deadline: '09 Sep 2017', done:false},         
+function ($scope, $state,  $stateParams,$localStorage) {
+   $scope.todos = ($localStorage.todolist !== null) ? $localStorage.todolist : ([{text:'Hiking', type: 'Movement', deadline: '09 Sep 2017', done:false},         
      {text: 'Afternoon tea', type: 'World', deadline: '10 Oct 2017',done:false}]);
       // console.log($scope.todos[0]);
+    console.log($localStorage.todolist);
 
    $localStorage.todolist = $scope.todos;
+       console.log($scope.todos);
+       console.log($localStorage.todolist);
 
     $scope.getTotalTodos = function () {
     	    console.log($scope.todos);
@@ -18,34 +21,36 @@ function ($scope, $state, $localStorage, $stateParams) {
     	text:$scope.formTodoText,
     	done:false
     });
+   
     $scope.formTodoText = '';
 
     $localStorage.todolist = $scope.todos;
-       console.log($localStorage.todolist[2].text);
+       console.log($localStorage.todolist);
 
   };
  
-    $localStorage.test = "kkk";
-    console.log($localStorage.test);
-   console.log($localStorage.todolist[0].text);
+   console.log($localStorage.todolist);
 
     $scope.removeItem = function(index){
     $scope.todos.splice(index, 1);
     $localStorage.todolist = $scope.todos;
   }
 
+ 	$localStorage.index = {};
     $scope.goSetGoals = function(index){
     	$state.go('home.setGoals', {index:index});
+    	$localStorage.index = index;
     }
-    $scope.showCato = function(catogory){
-    	console.log(catogory);
+    $scope.showCato = function(category){
+    	console.log(category);
+    	$localStorage.todolist[$localStorage.index].category = category;
+    	$scope.category = $localStorage.todolist[$localStorage.index].category;
+
     }
-    $scope.showData = function(date){
-    	console.log(date);
-    }
-    $scope.addDetail = function(catogory, date){
-    	$scope.todos.push({type: $scope.catogory, deadline: $scope.date});
-    	// console.log(todos[0].catogory);
+
+    $scope.addDetail = function(category, date){
+    	$scope.todos.push({type: $scope.category, deadline: $scope.date});
+    	// console.log(todos[0].category);
     	$state.go('home.goals');
     }
 
@@ -56,6 +61,10 @@ function ($scope, $state, $localStorage, $stateParams) {
     	format: "DD.MM.YYYY",
     	onClick: function(date){
     	console.log(date);
+    	$localStorage.todolist[$localStorage.index].date = date;
+    	$scope.date = $localStorage.todolist[$localStorage.index].date;
+
+
     }
     });
     $("#myDatePicker-1").ionDatePicker();

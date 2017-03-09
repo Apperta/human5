@@ -49,6 +49,7 @@ angular.module('app.routes', ['ionicUIRouter'])
 
   .state('home.profile', {
     url: '/page4',
+    cache: false,
     views: {
       'tab3': {
         templateUrl: 'templates/settingCtrl/profile.html',
@@ -137,6 +138,7 @@ angular.module('app.routes', ['ionicUIRouter'])
 
   .state('home.settings', {
     url: '/page12',
+    cache: false,
     views: {
       'tab3': {
         templateUrl: 'templates/settingCtrl/settings.html',
