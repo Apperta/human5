@@ -53,9 +53,11 @@
             <option>5</option>
           </select>
         </label>
-        <button type="submit" style= "border-radius:10px;background-color:deepskyblue;color:white;" class = "button   button-block">Log in</button>
-        <a ui-sref="home.performance" id="tH5-button5" class="button button-positive  button-block">Save</a>
-      </form>
+        <div class="notValid"> <br> Please insert value in each field! </div>
+        <button type="submit" data-ng-click="addSelfRate()" style= "border-radius:10px;background-color:deepskyblue;color:white;" class ="button button-block">Save</button>
+        <br><br><br><br>
+        <button type="" data-ng-click="goPerformancePage()" style= "border-radius:10px;background-color:deepskyblue;color:white;" class ="button button-block">Rate Performance</button>
+        </form>
       <div id="tH5-button-bar1" class="button-bar"></div>
     </div>
 

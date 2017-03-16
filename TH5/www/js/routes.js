@@ -24,7 +24,8 @@ angular.module('app.routes', ['ionicUIRouter'])
       /page1/tab5/page2
   */
   .state('home.setGoals', {
-    url: '/page2',
+    url: '/page2/:index',
+    cache: false,
     views: {
       'tab1': {
         templateUrl: 'templates/goalsCtrl/setGoals.html',
@@ -39,6 +40,7 @@ angular.module('app.routes', ['ionicUIRouter'])
 
   .state('home.statistics', {
     url: '/page3',
+    cache: false,
     views: {
       'tab2': {
         templateUrl: 'templates/statisticCtrl/statistics.html',
@@ -49,6 +51,7 @@ angular.module('app.routes', ['ionicUIRouter'])
 
   .state('home.profile', {
     url: '/page4',
+    cache: false,
     views: {
       'tab3': {
         templateUrl: 'templates/settingCtrl/profile.html',
@@ -59,24 +62,28 @@ angular.module('app.routes', ['ionicUIRouter'])
 
   .state('home', {
     url: '/page1',
+    cache: false,
     templateUrl: 'templates/home.html',
     abstract:true
   })
 
   .state('login', {
     url: '/page5',
+    cache: false,
     templateUrl: 'templates/regCtrl/login.html',
     controller: 'regCtrl'
   })
 
   .state('signup', {
     url: '/page6',
+    cache: false,
     templateUrl: 'templates/regCtrl/signup.html',
     controller: 'regCtrl'
   })
 
   .state('home.tH5', {
     url: '/page8',
+    cache: false,
     views: {
       'tab1': {
         templateUrl: 'templates/th5Ctrl/tH5.html',
@@ -87,6 +94,7 @@ angular.module('app.routes', ['ionicUIRouter'])
 
   .state('home.performance', {
     url: '/page9',
+    cache: false,
     views: {
       'tab1': {
         templateUrl: 'templates/th5Ctrl/performance.html',
@@ -97,12 +105,14 @@ angular.module('app.routes', ['ionicUIRouter'])
 
   .state('sWSW', {
     url: '/page10',
+    cache: false,
     templateUrl: 'templates/th5Ctrl/sWSW.html',
     controller: 'th5Ctrl'
   })
 
   .state('menu', {
     url: '/page11',
+    cache: false,
     templateUrl: 'templates/menu.html',
     controller: 'th5Ctrl'
   })
@@ -122,6 +132,7 @@ angular.module('app.routes', ['ionicUIRouter'])
   */
   .state('home.goals', {
     url: '/page13',
+    cache: false,
     views: {
       'tab1': {
         templateUrl: 'templates/goalsCtrl/goals.html',
@@ -136,6 +147,7 @@ angular.module('app.routes', ['ionicUIRouter'])
 
   .state('home.settings', {
     url: '/page12',
+    cache: false,
     views: {
       'tab3': {
         templateUrl: 'templates/settingCtrl/settings.html',

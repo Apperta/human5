@@ -1,7 +1,16 @@
-myapp.controller('regCtrl', ['$scope', '$state', '$stateParams',
-  function ($scope, $state, $stateParams)
+myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
+  function ($scope, $state, $stateParams,$localStorage)
   {
     $scope.badLogin = true;
+    
+    $scope.selfRateList = ([{mind:0, movement: 0, nutrition: 0, world:0, body:0}, {mind:0, movement: 0, nutrition: 0, world:0, body:0},{mind:0, movement: 0, nutrition: 0, world:0, body:0},{mind:0, movement: 0, nutrition: 0, world:0, body:0},{mind:0, movement: 0, nutrition: 0, world:0, body:0}]);
+    if($localStorage.rateList == null)
+    $localStorage.rateList = $scope.selfRateList;
+    
+    $scope.todos = ([{text:'', type: '', deadline: '', done:false}]);
+    if($localStorage.todolist == null)
+    $localStorage.todolist = $scope.todos;
+    
     login = function (userVal, passVal)
     {   //TODO make the post to the server with userVal and passVal
         var checkGoodLogin = 1; //post to server and get the response in this
@@ -25,5 +34,9 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams',
     {
       $scope.badLogin = false;
     }
+
   }
+
+ 
+
 }])

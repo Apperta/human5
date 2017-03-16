@@ -1,8 +1,213 @@
+<!-- <script>
+    $('.question1-button').click(function(e) {
+        $('.question1-button').not(this).removeClass('active');
+        $(this).toggleClass('active');
+        e.preventDefault();
+    });
+</script> -->
+
+<!-- Test CSS -->
+<!-- .question1-button:active, .active {
+    background-color:red;
+    color: white;
+} -->
+
 <ion-view title="WEMWBS" id="page14">
-  <ion-content padding="true" class="manual-remove-top-padding has-header">
-    <div>
-      <img src="img/coFG3uxxSNOKgQo0PxVL_ScreenShot2016-12-12at10.51.53PM.png" style="display: block; width: 100%; margin-left: auto; margin-right: auto;">
-    </div>
+    <ion-content padding="true" class="manual-remove-top-padding has-header">
+        <ion-card>
+            <ion-card-content>
+                <div id = "measuringScale" class="card" style="text-align: center; vertical-align: middle;">
+                    <ion-item class="item-divider" id="WEMWBS-list-item-divider0">Scale<br>None of the time (1) -----> All the time (5)</ion-item>
+                </div>
+            </ion-card-content>
+        </ion-card>
+        <form id="WEMWBS-form" class="list">
+            <div class="card" ng-controller="th5Ctrl">
+                <ion-card>
+                    <ion-card-content>
+                        <div id = "ques1" class="card" style="text-align: center; vertical-align: middle;">
+                            <ion-item class="item-divider" id="WEMWBS-list-item-divider1">I've been feeling optimistic about the future</ion-item>
+                            <!-- <div>
+                            <h5>I've been feeling optimistic about the future</h5>
+                        </div> -->
+                        <div class="row" >
+                            <div class="col">
+                                <input type="button" value="1" class="button button-stable question1-button">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="2" class="button button-stable question1-button">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="3" class="button button-stable question1-button">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="4" class="button button-stable question1-button">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="5" class="button button-stable question1-button">
+                            </div>
+                        </div>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+            <ion-card>
+                <ion-card-content>
+                    <div id = "ques2" class="card" style="text-align: center; vertical-align: middle;">
+                        <div>
+                            <ion-item class="item-divider" id="WEMWBS-list-item-divider2">I've been feeling useful</ion-item>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <input type="button" value="1" class="button button-stable">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="2" class="button button-stable">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="3" class="button button-stable">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="4" class="button button-stable">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="5" class="button button-stable">
+                            </div>
+                        </div>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+            <ion-card>
+                <ion-card-content>
+                    <div id = "ques3" class="card" style="text-align: center; vertical-align: middle;">
+                        <div>
+                            <ion-item class="item-divider" id="WEMWBS-list-item-divider1">I've been feeling relaxed</ion-item>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <input type="button" value="1" class="button button-stable">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="2" class="button button-stable">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="3" class="button button-stable">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="4" class="button button-stable">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="5" class="button button-stable">
+                            </div>
+                        </div>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+            <ion-card>
+                <ion-card-content>
+                    <div id = "ques4" class="card" style="text-align: center; vertical-align: middle;">
+                        <div>
+                            <ion-item class="item-divider" id="WEMWBS-list-item-divider4">I've been dealing with my problems well</ion-item>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <input type="button" value="1" class="button button-stable">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="2" class="button button-stable">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="3" class="button button-stable">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="4" class="button button-stable">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="5" class="button button-stable">
+                            </div>
+                        </div>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+            <ion-card>
+                <ion-card-content>
+                    <div id = "ques5" class="card" style="text-align: center; vertical-align: middle;">
+                        <div>
+                            <ion-item class="item-divider" id="WEMWBS-list-item-divider5">I've been thinking clearly</ion-item>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <input type="button" value="1" class="button button-stable">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="2" class="button button-stable">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="3" class="button button-stable">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="4" class="button button-stable">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="5" class="button button-stable">
+                            </div>
+                        </div>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+            <ion-card>
+                <ion-card-content>
+                    <div id = "ques6" class="card" style="text-align: center; vertical-align: middle;">
+                        <div>
+                            <ion-item class="item-divider" id="WEMWBS-list-item-divider6">I've been feeling close to other people</ion-item>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <input type="button" value="1" class="button button-stable">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="2" class="button button-stable">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="3" class="button button-stable">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="4" class="button button-stable">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="5" class="button button-stable">
+                            </div>
+                        </div>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+            <ion-card>
+                <ion-card-content>
+                    <div id = "ques7" class="card" style="text-align: center; vertical-align: middle;">
+                        <div>
+                            <ion-item class="item-divider" id="WEMWBS-list-item-divider7">I've been able to make up my own mind<br>about things </ion-item>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <input type="button" value="1" class="button button-stable">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="2" class="button button-stable">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="3" class="button button-stable">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="4" class="button button-stable">
+                            </div>
+                            <div class="col">
+                                <input type="button" value="5" class="button button-stable">
+                            </div>
+                        </div>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+        </div>
+    </form>
     <a ui-sref="home.goals" id="wEMWBS-button9" class="button button-balanced  button-block">Save</a>
-  </ion-content>
+</ion-content>
 </ion-view>

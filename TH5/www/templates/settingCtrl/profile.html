@@ -3,20 +3,24 @@
     <ion-list id="profile-list4">
       <ion-item class="item-avatar" id="profile-list-item6">
         <img src="img/tIAXkcC8QQqu9wcrZi5P_raghav.png">
-        <h2>Donald Hanlin</h2>
-        <p>34 Yrs</p>
+        <h2>{{fullname}}</h2>
       </ion-item>
     </ion-list>
     <h4 id="profile-heading2" style="color:#000000;">About You</h4>
     <ion-list id="profile-list5">
-      <ion-item class="item-icon-right" id="profile-list-item10">Height
-        <span class="item-note">180 cm</span>
-        <i class="icon ion-android-create icon-accessory"></i>
-      </ion-item>
-      <ion-item class="item-icon-right" id="profile-list-item11">Weight
-        <span class="item-note">69 kg</span>
-        <i class="icon ion-android-create icon-accessory"></i>
-      </ion-item>
+          <label class="item item-input" id="login-input1">
+            <span class="input-label">Height</span>
+            <input type="text" placeholder="" ng-model="height">
+            <button class="icon ion-android-create icon-accessory" ng-click="editHeight" style="right: 15px;"></button>
+
+          </label>
+
+          <label class="item item-input" id="login-input2">
+             <span class="input-label">Weight</span>
+              <input type="text" placeholder="" ng-model="weight">
+              <i class="icon ion-android-create icon-accessory"></i>
+
+          </label>
     </ion-list>
     <h4 id="profile-heading3" style="color:#000000;">Your Account</h4>
     <ion-list id="profile-list6">
