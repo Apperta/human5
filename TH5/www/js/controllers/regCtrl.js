@@ -7,36 +7,53 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
     if($localStorage.rateList == null)
     $localStorage.rateList = $scope.selfRateList;
     
-    $scope.todos = ([{text:'', type: '', deadline: '', done:false}]);
+    $scope.todos = ([{text:'', type: '', deadline: '', done:true}]);
     if($localStorage.todolist == null)
     $localStorage.todolist = $scope.todos;
-    
-    login = function (userVal, passVal)
-    {   //TODO make the post to the server with userVal and passVal
-        var checkGoodLogin = 1; //post to server and get the response in this
 
-        //todo not always working the second part of the if
-        if(checkGoodLogin == 1 && passVal != "")
-        {
-          return true;
-        }
-        return false;
-    }
 
-  $scope.formSubmit = function()
+  $scope.loginSubmit = function()
   {
-    console.log($scope.username + " " + $scope.password);
-    if(login($scope.username, $scope.password) == true)
-    {
-      $state.go('home.tH5');
-    }
-    else
+    console.log({ email: $scope.username, password:$scope.password});
+    if(!$scope.username.includes("@"))
     {
       $scope.badLogin = false;
     }
+    else if(!$scope.username.includes("."))
+    {
+      $scope.badLogin = false;
+    }
+    else
+    {
+          $scope.badLogin = true;
+          $.post("http://51.140.39.138:3000/users/login", { email: $scope.username, password:$scope.password}, 
+          function( data ) 
+          {
+            console.log(data.s_id);
+             if (data.s_id != -1)
+            {
+                $state.go('home.tH5');
+            }
+            if (data.s_id == -1)
+            {
+              $scope.badLogin = false;
+              $scope.password = "";
+            }
+          },"json");  
+    }
+ }
 
-  }
-
- 
+  $scope.registerSubmit = function()
+  {
+    $.post("http://51.140.39.138:3000/users/register", { name:$scope.name, email: $scope.username, password:$scope.password}, 
+      function( data ) 
+      {
+        console.log(data.s_id);
+         if (data.s_id != -1)
+        {
+            $state.go('login');
+        }
+      },"json");
+ }
 
 }])

@@ -1,27 +1,30 @@
 <ion-view title="Set Goals" id="page2">
   <ion-content padding="true" class="has-header">
     <div class="item item-body" id="setGoals-list-item-container1" ng-controller="goalsCtrl">
-      <form id="setGoals-form4" class="list">
+      <form id="details" class="list" class="form-horizontal" >
         <label class="item item-select" id="setGoals-select1">
           <span class="input-label">Catogory</span>
-          <select ng-model="catogory" ng-change="showCato(catogory)">
+          <select ng-model="category" id="categoryList"><!-- ng-options="o.name for o in options" -->
+          <option value="">{{selectedCate}}</option>
             <option>Mind</option>
             <option>Body</option>
             <option>Movement</option>
             <option>Nutrition</option>
             <option>World</option>
           </select>
+        </label><br/>
+      <div class="form-group">
+        <label class="item">Date
+        <div class="date">
+            <div class="input-group input-append date" id="datePicker">
+                <input ng-model="deadline" ng-model-instant placeholder="{{selectedDate}}" type="text" class="form-control" name="date" />
+                <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+            </div>
+        </div>
         </label>
-         <label class="item item-input" id="todo-input" style="margin-top: 10px;">
-          <span class="input-label">Deadline</span>
-          </label>
-        <label class="myCalendar" id="myCalendar-1">
-          <input class="myInput" id="myDatePicker-1" data-lang="en" data-years="1995-2022" data-sundayfirst="false" /> 
-        </label>
-        <ion-toggle toggle-class="toggle-positive" id="setGoals-toggle2" ng-click="addTodo()">Add to Group</ion-toggle>
-
-         <button class="button button-balanced button-block add-btn" ng-click="addDetail()">Save</button>
-      </form>
+    </div>
+      <button type="submit" ng-click="saveTodo()" style= "border-radius:10px;background-color:deepskyblue;color:white; margin-top: 70px;" class ="button button-block">Save</button>
+     </form>
     </div>
   </ion-content>
 </ion-view>

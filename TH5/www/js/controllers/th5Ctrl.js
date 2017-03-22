@@ -140,6 +140,24 @@ myapp.controller('th5Ctrl', ['$scope', '$state', '$stateParams', '$localStorage'
           $("#p4g").show();
     });;
 
+var brush = d3.brush();
+
+var svg = d3.select("svg");
+
+svg.append("g")
+    .attr("class", "brush")
+    .call(brush)
+    .call(brush.move, [[307, 167], [611, 539]])
+  .select(".selection")
+    .attr("id", "brush-selection");
+
+svg.append("clipPath")
+    .attr("id", "brush-clip")
+  .append("use")
+    .attr("xlink:href", "#brush-selection");
+
+svg.select("#color-image")
+    .attr("clip-path", "url(#brush-clip)");
 
 
   }])
