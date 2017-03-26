@@ -1,3 +1,42 @@
+.has-header{
+/* // background-image: url('../img/bg.jpg');
+*/
+  background-color: cornsilk;
+}
+/*nvd3*/
+body {
+  margin: auto;
+  width: 960px;
+}
+
+text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  stroke: url(#temperature-gradient);
+  stroke-width: 1.5px;
+}
+
+/* - - - - - - - - - - - - -*/
+
+select {
+    border: 1px solid #fff;
+    background-color: rgba(255,255,255,.2);
+    padding: 5px;
+}
 .add-input {
   width: 60%;
   height: 20px;
@@ -10,6 +49,23 @@
 }
 
 
+#eventForm .form-control-feedback {
+    top: 0;
+    right: -15px;
+}
+.centered {
+  position: fixed;
+  left: 40%;
+  top: 10%;
+  /* bring your own prefixes */
+  transform: translate(0%, -50%);
+}
+
+.logo {
+  height: 100px;
+  width: 100px;
+  top: 20%;
+}
 .todo-wrapper {
   background: #55B6AE;
   width: 100%;
@@ -22,17 +78,8 @@
   font-size: 15px;
 }
 
-h2 {
-  font-size: 2em;
-  
-  font-family: megrim, fantasy;
-  padding: 40px;
-  margin: 0;
-  color: #333;
-  text-align: center;
- }
 .emphasis {
-  font-family: vast-shadow, sans-serif;
+  font-family: sans-serif;
   font-size: 2.5em;
 }
 
@@ -42,7 +89,6 @@ ul {
 }
 
 li {
-  font-family: fantasy;
   font-size: 1.2em;
   padding: 20px;
   
@@ -67,12 +113,6 @@ li input[type="checkbox"] {
   color: #ddd;
 }
 
-h2 {
-   padding: 0;
-   font-family: megrim, fantasy;
-   color: #333;
-  }
-}
 
 .clear-btn {
   width: 100%;

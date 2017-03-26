@@ -1,29 +1,29 @@
 <ion-view title="Set Goals" id="page2">
   <ion-content padding="true" class="has-header">
     <div class="item item-body" id="setGoals-list-item-container1" ng-controller="goalsCtrl">
-      <form id="details" class="list" class="form-horizontal" >
+      <form id="eventForm" class="form-horizontal" >
         <label class="item item-select" id="setGoals-select1">
           <span class="input-label">Catogory</span>
-          <select ng-model="category" id="categoryList"><!-- ng-options="o.name for o in options" -->
-          <option value="">{{selectedCate}}</option>
-            <option>Mind</option>
-            <option>Body</option>
-            <option>Movement</option>
-            <option>Nutrition</option>
-            <option>World</option>
-          </select>
+            <select ng-model="type" ng-init="type = selected">
+            <option ng-repeat="type in types">{{type}}</option>
+              <!-- <option>Mind</option>
+              <option>Body</option>
+              <option>Movement</option>
+              <option>Nutrition</option>
+              <option>World</option> -->
+            </select>
         </label><br/>
-      <div class="form-group">
-        <label class="item">Date
-        <div class="date">
-            <div class="input-group input-append date" id="datePicker">
-                <input ng-model="deadline" ng-model-instant placeholder="{{selectedDate}}" type="text" class="form-control" name="date" />
-                <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
-            </div>
+        <div class="form-group">
+            <label class="item">Date
+              <div class="date">
+                  <div class="input-group input-append date" id="datePicker">
+                      <input type="text" class="form-control" name="event" ng-model="deadline" ng-model-instant />
+                      <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                  </div>
+              </div>
+            </label>
         </div>
-        </label>
-    </div>
-      <button type="submit" ng-click="saveTodo()" style= "border-radius:10px;background-color:deepskyblue;color:white; margin-top: 70px;" class ="button button-block">Save</button>
+          <button type="submit" ng-click="saveTodo()" style= "border-radius:10px;background-color:deepskyblue;color:white; margin-top: 70px;" class ="button button-block">Save</button>
      </form>
     </div>
   </ion-content>

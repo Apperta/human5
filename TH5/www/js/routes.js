@@ -1,59 +1,40 @@
 angular.module('app.routes', ['ionicUIRouter'])
 
-.config(function($stateProvider, $urlRouterProvider) {
-
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
+.config(function($stateProvider, $urlRouterProvider) 
+{
   $stateProvider
-    
   
-
-      /* 
-    The IonicUIRouter.js UI-Router Modification is being used for this route.
-    To navigate to this route, do NOT use a URL. Instead use one of the following:
-      1) Using the ui-sref HTML attribute:
-        ui-sref='home.setGoals'
-      2) Using $state.go programatically:
-        $state.go('home.setGoals');
-    This allows your app to figure out which Tab to open this page in on the fly.
-    If you're setting a Tabs default page or modifying the .otherwise for your app and
-    must use a URL, use one of the following:
-      /page1/tab1/page2
-      /page1/tab5/page2
-  */
-  .state('home.setGoals', {
+  .state('menu.setGoals', {
     url: '/page2/:index',
     cache: false,
     views: {
-      'tab1': {
+      'side-menu21': {
         templateUrl: 'templates/goalsCtrl/setGoals.html',
         controller: 'goalsCtrl'
       },
-      'tab5': {
+      'side-menu21': {
         templateUrl: 'templates/goalsCtrl/setGoals.html',
         controller: 'goalsCtrl'
       }
     }
   })
 
-  .state('home.statistics', {
+  .state('menu.statistics', {
     url: '/page3',
     cache: false,
     views: {
-      'tab2': {
+      'side-menu21': {
         templateUrl: 'templates/statisticCtrl/statistics.html',
         controller: 'statisticCtrl'
       }
     }
   })
 
-  .state('home.profile', {
+  .state('menu.profile', {
     url: '/page4',
     cache: false,
     views: {
-      'tab3': {
+      'side-menu21': {
         templateUrl: 'templates/settingCtrl/profile.html',
         controller: 'settingCtrl'
       }
@@ -67,11 +48,12 @@ angular.module('app.routes', ['ionicUIRouter'])
     abstract:true
   })
 
-  .state('login', {
+  .state('login', 
+  {
     url: '/page5',
     cache: false,
     templateUrl: 'templates/regCtrl/login.html',
-    controller: 'regCtrl'
+    controller: 'regCtrl'    
   })
 
   .state('signup', {
@@ -81,90 +63,107 @@ angular.module('app.routes', ['ionicUIRouter'])
     controller: 'regCtrl'
   })
 
-  .state('home.tH5', {
+  .state('menu.tH5', {
     url: '/page8',
     cache: false,
     views: {
-      'tab1': {
+      'side-menu21': {
         templateUrl: 'templates/th5Ctrl/tH5.html',
         controller: 'th5Ctrl'
       }
     }
   })
 
-  .state('home.performance', {
+  .state('menu.performance', {
     url: '/page9',
     cache: false,
     views: {
-      'tab1': {
+      'side-menu21': {
         templateUrl: 'templates/th5Ctrl/performance.html',
         controller: 'th5Ctrl'
       }
     }
   })
 
-  .state('sWSW', {
+  .state('menu.sWSW', {
     url: '/page10',
     cache: false,
-    templateUrl: 'templates/th5Ctrl/sWSW.html',
-    controller: 'th5Ctrl'
+    views: {
+      'side-menu21':{
+        templateUrl: 'templates/th5Ctrl/sWSW.html',
+        controller: 'th5Ctrl'
+      }
+    }
+    
   })
 
-  .state('menu', {
-    url: '/page11',
-    cache: false,
-    templateUrl: 'templates/menu.html',
-    controller: 'th5Ctrl'
-  })
-
-  /* 
-    The IonicUIRouter.js UI-Router Modification is being used for this route.
-    To navigate to this route, do NOT use a URL. Instead use one of the following:
-      1) Using the ui-sref HTML attribute:
-        ui-sref='home.goals'
-      2) Using $state.go programatically:
-        $state.go('home.goals');
-    This allows your app to figure out which Tab to open this page in on the fly.
-    If you're setting a Tabs default page or modifying the .otherwise for your app and
-    must use a URL, use one of the following:
-      /page1/tab1/page13
-      /page1/tab5/page13
-  */
-  .state('home.goals', {
+  .state('menu.goals', {
     url: '/page13',
     cache: false,
     views: {
-      'tab1': {
+      'side-menu21': {
         templateUrl: 'templates/goalsCtrl/goals.html',
         controller: 'goalsCtrl'
       },
-      'tab5': {
+      'side-menu21': {
         templateUrl: 'templates/goalsCtrl/goals.html',
         controller: 'goalsCtrl'
       }
     }
   })
 
-  .state('home.settings', {
+  .state('menu.settings', {
     url: '/page12',
     cache: false,
     views: {
-      'tab3': {
+      'side-menu21': {
         templateUrl: 'templates/settingCtrl/settings.html',
         controller: 'settingCtrl'
       }
     }
   })
 
-  .state('home.wEMWBS', {
+  .state('menu.wEMWBS', {
     url: '/page14',
+    cache: false,
     views: {
-      'tab1': {
+      'side-menu21': {
         templateUrl: 'templates/th5Ctrl/wEMWBS.html',
         controller: 'th5Ctrl'
       }
     }
   })
+
+ .state('menu.theHumanFive', {
+    url: '/page17',
+    cache: false,
+    views: {
+      'side-menu21': {
+        templateUrl: 'templates/theHumanFive.html',
+        controller: 'th5Ctrl'
+      }
+    }
+  })
+
+  .state('menu', {
+    url: '/side-menu21',
+    cache: false,
+    templateUrl: 'templates/menu.html',
+    controller: 'settingCtrl'
+  })
+
+  .state('menu.knowledgeBase', {
+    url: '/page15',
+    cache: false,
+    views: {
+      'side-menu21': {
+        templateUrl: 'templates/knowledgeBase.html',
+        controller: 'settingCtrl'
+      }
+    }
+  })
+
+
 
 $urlRouterProvider.otherwise('/page5')
 

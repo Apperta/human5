@@ -2,30 +2,44 @@
   <ion-content padding="true" class="has-header" >
   <div ng-controller="goalsCtrl">
    <div class="buttons">
-   <button class="button button-icon icon ion-checkmark-circled" ng-click="data.showDelete = !data.showDelete; data.showReorder = false">
+      <!-- add more todo items  -->     
+    <form>
+        <label class="item item-input" id="todo-input" style="margin-top: 40px; margin-bottom: 20px;">
+        <input type="text" placeholder="I need to ..." class="add-input" ng-model="todoText" ng-model-instant/>
+        </label>
+        <button class="button button-block" style= "border-radius:10px;background-color:sandybrown;color:black;" ng-click="addTodo()">Add Goals</button>
+    </form>
+    <button class="button button-block" style= "border-radius:10px;background-color:sandybrown;color:black;" ng-click="data.showDelete = !data.showDelete; data.showReorder = false">Complete Goals</button>
    </div>
     
     <form id="goals-form8" class="list">
       <ion-item class="item-divider" id="goals-list-item-divider1"> Things need to be done</ion-item>
-      <ion-list show-delete="data.showDelete" show-reorder="data.showReorder" canSwipe="listCanSwipe">
-      <ion-item ng-repeat="todo in todos" item="todo" data-ng-click="goSetGoals($todo.id)" class="item-remove-animate">{{todo.text}} {{todo.deadline}}
-      <ion-delete-button class="ion-minus-circled" ng-click="removeTodo(todo)">
-      </ion-delete-button>
-      <ion-option-button class="button-assertive" ng-click="edit(todo,$index)">Edit
-      </ion-option-button>
-      <ion-option-button class="button-calm" ng-click="share(todo)">Share
-      </ion-option-button>
-      </ion-item>
-      </ion-list>
+          
+          <ion-list show-delete="data.showDelete" show-reorder="data.showReorder" canSwipe="listCanSwipe">
+            <ion-item ng-repeat="todo in todos" item="todo" data-ng-click="goSetGoals($todo.id)" class="item-remove-animate noPadding">
+                <div class="row">
+                    <div class="col col-lg-2">
+                        {{todo.text}} 
+                    </div>
+                    <div class="col col-lg-2">&nbsp;</div>
+                    <div class="col col-lg-2" align="right">
+                        {{todo.type}} {{todo.deadline}}
+                    </div>
+                </div>
 
-<!-- add more todo items  -->     
-      <form>
-      <label class="item item-input" id="todo-input" style="margin-top: 40px; margin-bottom: 20px;">
-      <input type="text" placeholder="I need to ..." class="add-input" ng-model="todoText" ng-model-instant/>
-      </label>
+                <ion-delete-button class="ion-minus-circled" ng-click="removeTodo(todo)">
+                </ion-delete-button>
 
-    </form>
-    <button class="button button-block" style= "border-radius:10px;background-color:sandybrown;color:black;" ng-click="addTodo()">Add Goals</button>
+                <ion-option-button class="button-assertive" ng-click="edit(todo,$index)">Edit
+                </ion-option-button>
+
+                <ion-option-button class="button-calm" ng-click="share(todo)">
+                Share
+                </ion-option-button>
+            </ion-item>
+          </ion-list>
+
+
     </div>
   </ion-content>
 </ion-view>

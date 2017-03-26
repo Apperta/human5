@@ -1,37 +1,36 @@
 <ion-view title="Profile" id="page4">
   <ion-content padding="true" class="has-header">
-    <ion-list id="profile-list4">
-      <ion-item class="item-avatar" id="profile-list-item6">
-        <img src="img/tIAXkcC8QQqu9wcrZi5P_raghav.png">
-        <h2>{{fullname}}</h2>
-      </ion-item>
-    </ion-list>
-    <h4 id="profile-heading2" style="color:#000000;">About You</h4>
-    <ion-list id="profile-list5">
-          <label class="item item-input" id="login-input1">
-            <span class="input-label">Height</span>
-            <input type="text" placeholder="" ng-model="height">
-            <button class="icon ion-android-create icon-accessory" ng-click="editHeight" style="right: 15px;"></button>
+          <img src="img/profilePic.png" style="height: 80px; width: 80px;" class="centered">
 
+      
+    <h4 id="profile-heading2" style="color:black; margin-top: 100px; text-align: center;" >About You</h4>
+    <ion-list id="profile-list5">
+    <label class="item-avatar text-center" id="profile-list-item6">
+      </label>
+          <label class="item item-input" id="login-input1">
+            <span class="input-label">Height</span> 
+            <input type="text" placeholder="{{height}}" ng-model="height">
           </label>
 
           <label class="item item-input" id="login-input2">
              <span class="input-label">Weight</span>
-              <input type="text" placeholder="" ng-model="weight">
-              <i class="icon ion-android-create icon-accessory"></i>
-
+              <input type="text" placeholder="{{weight}}" ng-model="weight">
           </label>
     </ion-list>
-    <h4 id="profile-heading3" style="color:#000000;">Your Account</h4>
-    <ion-list id="profile-list6">
-      <ion-item id="profile-list-item16">Email ID
-        <span class="item-note">donald.hanlin@xyz.com</span>
-      </ion-item>
-      <ion-item id="profile-list-item17">Username
-        <span class="item-note">donald123</span>
-      </ion-item>
+    <h4 id="profile-heading3" style="color:black;">Your Account</h4>
+    <ion-list id="profile-list5">
+          <label class="item item-input" id="login-input1">
+            <span class="input-label">Email</span> 
+            <input type="text" placeholder="{{email}}" ng-model="email">
+          </label>
+
+          <label class="item item-input" id="login-input2">
+             <span class="input-label">Username</span>
+              <input type="text" placeholder="{{username}}" ng-model="username">
+          </label>
     </ion-list>
+    <button class="button button-block" style= "border-radius:10px;background-color:sandybrown;color:black;" ng-click="update()">Save</button>
     <a ui-sref="home.settings" id="profile-button8" class="button button-balanced  button-block">Settings</a>
-    <a ui-sref="login" id="profile-button7" class="button button-table  button-block">Log Out</a>
+    <button id="profile-button7" class="button button-table  button-block" ng-click="logout()">Log Out</button>
   </ion-content>
 </ion-view>

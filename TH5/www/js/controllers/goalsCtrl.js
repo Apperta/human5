@@ -6,29 +6,26 @@ function ($scope, $state, $stateParams,$localStorage) {
   $localStorage.iteratorTodo;
   $localStorage.currentTodo;
   
-  $scope.todos= [
-     {text:'', type: '', deadline: '', done:false},         
-     ];
+  $scope.todos= [];
   if ($localStorage.todolist != null) {
     $scope.todos = $localStorage.todolist;
   }
-  $scope.data = {
-    showDelete: false
-  };
+  
 
-  // $scope.options = [
-  // {name:'Mind'},
-  // {name:'Body'},
-  // {name:'Movement'},
-  // {name:'Nutrition'},
-  // {name:'World'}
-  // ];
+  $scope.types = [
+  "World",
+  "Mind",
+  "Body",
+  "Nutrition",
+  "Movement"
+  ];
+
 
   $scope.currentIndex;
   var currentTodoGlobal;
   $scope.edit = function(todo, index){
     console.log("Edit Item: " + todo.text);
-    $state.go('home.setGoals');
+    $state.go('menu.setGoals');
     $localStorage.currentTodo = angular.copy($localStorage.todolist[index]);
     $localStorage.iteratorTodo = index;
     console.log('iteratorTodo:',$localStorage.iteratorTodo);
@@ -36,26 +33,25 @@ function ($scope, $state, $stateParams,$localStorage) {
 
 
   };
-      console.log('iteratorTodo:',$localStorage.iteratorTodo);
 
-   // $scope.selectedCate = $localStorage.todolist[$localStorage.interatorTodo].type;
-   // $scope.selectedDate = $localStorage.todolist[$localStorage.interatorTodo].deadline;
   $scope.saveTodo = function(){
-    console.log($localStorage.iteratorTodo);
-    console.log($localStorage.currentTodo.type);
-    $localStorage.currentTodo.type = $scope.category;
-    $localStorage.currentTodo.deadline = $scope.deadline;
-   
-   
-    console.log('currentTodo:',$localStorage.currentTodo)
-
+    $localStorage.currentTodo.type = $scope.type;   
+    $localStorage.currentTodo.deadline = $('#datePicker').find("input").val();
+    console.log($localStorage.currentTodo.deadline);
     $localStorage.todolist[$localStorage.iteratorTodo] = $localStorage.currentTodo;
+    console.log('local this item:',$localStorage.todolist[$localStorage.iteratorTodo]);
+    console.log("saved type: " + $localStorage.todolist[$localStorage.iteratorTodo].type + ", deadline:" + $localStorage.todolist[$localStorage.iteratorTodo].deadline);
     $scope.todos = $localStorage.todolist;
-    console.log('this item:',$localStorage.todolist[$localStorage.iteratorTodo])
-    console.log("saved type: " + $localStorage.todolist[$localStorage.iteratorTodo].type);
-    $localStorage.currentTodo = {};
-  }
+    $state.go("menu.goals");
 
+
+
+  }
+    if(localStorage.todolist != null)
+    {
+        $scope.selected = $localStorage.todolist[$localStorage.iteratorTodo].type;
+        $scope.deadline = $localStorage.todolist[$localStorage.iteratorTodo].deadline;
+  }
   $scope.removeTodo = function(todo){
     $scope.todos.splice($scope.todos.indexOf(todo),1);
   };
@@ -77,35 +73,10 @@ function ($scope, $state, $stateParams,$localStorage) {
    $(document).ready(function($) {
     $('#datePicker')
         .datepicker({
-            format: 'mm/dd/yyyy',
-            orientation: 'auto bottom',
+            orientation: 'top left',
+            format: 'mm-dd-yyyy',
             todayHighlight: true
         })
-        .on('changeDate', function(e) {
-            // Revalidate the date field
-            $('#eventForm').bootstrapValidator('revalidateField', 'date');
-        });
-
-    $('#eventForm').bootstrapValidator({
-        framework: 'bootstrap',
-        icon: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        
-            date: {
-                validators: {
-                    notEmpty: {
-                        message: 'The date is required'
-                    },
-                    date: {
-                        format: 'MM/DD/YYYY',
-                        message: 'The date is not a valid'
-                    }
-                }
-            }
-        });
     });
 
 }])

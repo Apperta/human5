@@ -7,6 +7,10 @@ myapp.controller('th5Ctrl', ['$scope', '$state', '$stateParams', '$localStorage'
     $("#p3").hide();
     $("#p4").hide();
 
+     $(".question1-button").click(function()
+      {
+        console.log($(".question1-button").val());
+      });
 
     $scope.selfRateList = ([{mind:0, movement: 0, nutrition: 0, world:0, body:0}, {mind:0, movement: 0, nutrition: 0, world:0, body:0},{mind:0, movement: 0, nutrition: 0, world:0, body:0},{mind:0, movement: 0, nutrition: 0, world:0, body:0},{mind:0, movement: 0, nutrition: 0, world:0, body:0}]);
     if($localStorage.rateList != null)
@@ -31,7 +35,10 @@ myapp.controller('th5Ctrl', ['$scope', '$state', '$stateParams', '$localStorage'
             });
             
             $(".notValid").hide();
-            $state.go('home.performance');
+            $ionicViewService.nextViewOptions({
+              disableBack: true
+            });
+            $state.go('menu.performance');
         }
 
         $localStorage.rateList = $scope.selfRateList;
@@ -39,126 +46,79 @@ myapp.controller('th5Ctrl', ['$scope', '$state', '$stateParams', '$localStorage'
 
     $scope.goPerformancePage = function()
     {
-        $state.go('home.performance');
+        $state.go('menu.performance');
     }
 
-    $("#p1g").click(function()
+    $scope.goWEMWBSPage = function()
     {
-          $("#p1").hide();
-          $("#p2").show();
-          $("#p3").show();
-          $("#p4").show();
-          $("#p1g").show();
-          $("#p2g").hide();
-          $("#p3g").hide();
-          $("#p4g").hide();
-    });
+        $state.go('menu.wEMWBS');
+    }
 
-     $("#p1").click(function()
+   
+    /*These lines are all chart setup.  Pick and choose which chart features you want to utilize. */
+nv.addGraph(function() {
+  var chart = nv.models.lineChart()
+                .margin({left: 30})  //Adjust chart margins to give the x-axis some breathing room.
+                .useInteractiveGuideline(true)  //We want nice looking tooltips and a guideline!
+                //.transitionDuration(350)  //how fast do you want the lines to transition?
+                .showLegend(true)       //Show the legend, allowing users to turn on/off line series.
+                .showYAxis(false)        //Show the y-axis
+                .showXAxis(true)        //Show the x-axis
+  ;
+
+  chart.xAxis     //Chart x-axis settings
+      .axisLabel('Stress Level')
+      .tickFormat(d3.format(',r'));
+
+  chart.yAxis     //Chart y-axis settings
+      //.axisLabel('Voltage (v)')
+      .tickFormat(d3.format('.02f'));
+
+  /* Done setting the chart up? Time to render it!*/
+  var myData = sinAndCos();   //You need data...
+
+  d3.select('#chart svg')    //Select the <svg> element you want to render the chart in.   
+      .datum(myData)         //Populate the <svg> element with chart data...
+      .call(chart);          //Finally, render the chart!
+
+  //Update the chart when window resizes.
+  nv.utils.windowResize(function() { chart.update() });
+  return chart;
+});
+/**************************************
+ * Simple test data generator
+ */
+function sinAndCos() {
+  var sin = [],sin2 = [],
+      cos = [];
+
+  //Data is represented as an array of {x,y} pairs.
+  for (var i = 0; i < 32; i++) {
+    sin.push({x: i, y: Math.sin(i/10)});
+    sin2.push({x: i, y: Math.sin(i/10) *0.25 + 0.5});
+    cos.push({x: i, y: .5 * Math.cos(i/10)});
+  }
+
+  //Line chart data should be sent as an array of series objects.
+  return [
+    // {
+    //   values: sin,      //values - represents the array of {x,y} data points
+    //   key: 'Sine Wave', //key  - the name of the series.
+    //   color: '#ff7f0e'  //color - optional: choose your own line color.
+    // },
+    // {
+    //   values: cos,
+    //   key: 'Cosine Wave',
+    //   color: '#2ca02c'
+    // },
     {
-          $("#p1").hide();
-          $("#p2").show();
-          $("#p3").show();
-          $("#p4").show();
-          $("#p1g").show();
-          $("#p2g").hide();
-          $("#p3g").hide();
-          $("#p4g").hide();
-    });;
-
-     $("#p2g").click(function()
-    {
-          $("#p1").show();
-          $("#p2").hide();
-          $("#p3").show();
-          $("#p4").show();
-          $("#p1g").hide();
-          $("#p2g").show();
-          $("#p3g").hide();
-          $("#p4g").hide();
-    });
-
-     $("#p2").click(function()
-    {
-          $("#p1").show();
-          $("#p2").hide();
-          $("#p3").show();
-          $("#p4").show();
-          $("#p1g").hide();
-          $("#p2g").show();
-          $("#p3g").hide();
-          $("#p4g").hide();
-    });;
-
-
-    $("#p3g").click(function()
-    {
-          $("#p1").show();
-          $("#p2").show();
-          $("#p3").hide();
-          $("#p4").show();
-          $("#p1g").hide();
-          $("#p2g").hide();
-          $("#p3g").show();
-          $("#p4g").hide();
-    });
-
-     $("#p3").click(function()
-    {
-          $("#p1").show();
-          $("#p2").show();
-          $("#p3").hide();
-          $("#p4").show();
-          $("#p1g").hide();
-          $("#p2g").hide();
-          $("#p3g").show();
-          $("#p4g").hide();
-    });;
-
-
-    $("#p4g").click(function()
-    {
-          $("#p1").show();
-          $("#p2").show();
-          $("#p3").show();
-          $("#p4").hide();
-          $("#p1g").hide();
-          $("#p2g").hide();
-          $("#p3g").hide();
-          $("#p4g").show();
-    });
-
-     $("#p4").click(function()
-    {
-          $("#p1").show();
-          $("#p2").show();
-          $("#p3").show();
-          $("#p4").hide();
-          $("#p1g").hide();
-          $("#p2g").hide();
-          $("#p3g").hide();
-          $("#p4g").show();
-    });;
-
-var brush = d3.brush();
-
-var svg = d3.select("svg");
-
-svg.append("g")
-    .attr("class", "brush")
-    .call(brush)
-    .call(brush.move, [[307, 167], [611, 539]])
-  .select(".selection")
-    .attr("id", "brush-selection");
-
-svg.append("clipPath")
-    .attr("id", "brush-clip")
-  .append("use")
-    .attr("xlink:href", "#brush-selection");
-
-svg.select("#color-image")
-    .attr("clip-path", "url(#brush-clip)");
-
+      values: sin,
+      key: 'Stress curve',
+      color: 'green',
+      area: true      //area - set to true if you want this line to turn into a filled area chart.
+    }
+  ];
+}
 
   }])
 
