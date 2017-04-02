@@ -3,18 +3,18 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
   {
     $scope.badLogin = true;
 
-    if($localStorage.userId != -1)
-    {
-      $.post("http://51.140.39.138:3000/users/verify", {s_id:$localStorage.userId}, 
-          function( data ) 
-          {
-              if(data.s_id != -1)
-            {
-                $localStorage.userId = data.s_id;
-                $state.go('menu.tH5');
-            }
-          },"json"); 
-    }
+    // if($localStorage.userId != -1)
+    // {
+    //   $.post("http://51.140.39.138:3000/users/verify", {s_id:$localStorage.userId}, 
+    //       function( data ) 
+    //       {
+    //           if(data.s_id != -1)
+    //         {
+    //             $localStorage.userId = data.s_id;
+    //             $state.go('menu.tH5');
+    //         }
+    //       },"json"); 
+    // }
 
     if($localStorage.iteratorTodo == null)
       $localStorage.iteratorTodo = 0;
@@ -81,5 +81,14 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
         }
       },"json");
  }
+
+
+// /* Facebook login */
+
+//   // FB.init();
+
+
+
+
 
 }])

@@ -13,22 +13,36 @@ text {
   font: 10px sans-serif;
 }
 
-.axis path,
-.axis line {
+
+.xAxis,
+.axisLabel{
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
 }
 
-.x.axis path {
+.xAxis {
   display: none;
 }
 
-.line {
-  fill: none;
-  stroke: url(#temperature-gradient);
+
+.bg {
+  fill: url(#temperature-gradient);
   stroke-width: 1.5px;
 }
+
+.nvtooltip{
+        font-size:16px;
+        width:120;
+        height:auto;
+        position:absolute; 
+        top:400px;
+        left:300px;
+        text-align:center;
+        border-width:1px;
+        background-color:white;
+        border-radius:5px;  
+      }
 
 /* - - - - - - - - - - - - -*/
 
@@ -48,6 +62,18 @@ select {
   text-indent: 55px;
 }
 
+  .tooltip{
+   font-family: simsun;
+   font-size: 14px;
+   width: 120;
+   height: auto;
+   position: absolute;
+   text-align: center;
+     border-style: solid; 
+   border-width: 1px;
+   background-color: white;
+   border-radius: 5px;
+  }
 
 #eventForm .form-control-feedback {
     top: 0;

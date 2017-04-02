@@ -20,7 +20,6 @@ function ($scope, $state, $stateParams,$localStorage) {
   "Movement"
   ];
 
-
   $scope.currentIndex;
   var currentTodoGlobal;
   $scope.edit = function(todo, index){
@@ -46,7 +45,7 @@ function ($scope, $state, $stateParams,$localStorage) {
 
 
 
-  }
+  };
     if(localStorage.todolist != null)
     {
         $scope.selected = $localStorage.todolist[$localStorage.iteratorTodo].type;

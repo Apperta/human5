@@ -2,30 +2,38 @@ myapp.controller('settingCtrl', ['$scope', '$state' ,'$localStorage' ,'$statePar
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $state, $localStorage, $stateParams) {
-    $scope.users = ([{fullname: 'Donald', height: '180', weight:'56', email:'donald166@ucl.ac.uk', username:'Donald166'}]);
+    
+//$scope.users = ([{fullname: 'Donald Hanlin', height: '180cm', weight:'67kg', email:'donald166@gmail.com', username:'donald166'}]);
+	$scope.users = [{fullname: '', height: '', weight:'', email:'', username:''}];
     if($localStorage.userItems != null){
-    	console.log($localStorage.userItems);
+    	console.log('local userItems not null');
     $scope.users = $localStorage.userItems;
 	}
 
-//$scope.users = ([{fullname: 'Donald Hanlin', height: '180cm', weight:'67kg', email:'donald166@gmail.com', username:'donald166'}]);
-
-    $scope.fullname = $localStorage.userItems[0].fullname;
-	$scope.height = $localStorage.userItems[0].height;
-	$scope.weight = $localStorage.userItems[0].weight;
-	$scope.email = $localStorage.userItems[0].email;
-	$scope.username = $localStorage.userItems[0].username;
-	
 	$scope.update = function()
 	{
-		$localStorage.userItems[0].fullname = $scope.fullname ;
-		$localStorage.userItems[0].height = $scope.height;
-		$localStorage.userItems[0].weight = $scope.weight;
-		$localStorage.userItems[0].email = $scope.email;
-		$localStorage.userItems[0].username = $scope.username;
-		console.log("updated");
-		$state.go('menu.th5');
+		console.log($scope.weight);
+		if ($scope.height && $scope.height != '' ) {
+			$localStorage.userItems[0].height = $scope.users[0].height;
+
+		}
+		if ($scope.weight && $scope.weight != '' ) {
+			$localStorage.userItems[0].weight = $scope.users[0].weight;
+
+		}
+		console.log('local: ',$localStorage.userItems[0]);
+		$scope.users= $localStorage.userItems;
+		console.log('updated scope',$scope.users[0]);
+
 	};
+	if ($localStorage.userItems[0].height != '' || $localStorage.userItems[0].weight != '') {
+		$scope.users[0].height = $localStorage.userItems[0].height;
+		$scope.users[0].weight = $localStorage.userItems[0].weight;
+		$scope.users[0].email = $localStorage.userItems[0].email;
+		$scope.users[0].username = $localStorage.userItems[0].username;
+	}
+
+
 
 	 $scope.logout = function()
     {
