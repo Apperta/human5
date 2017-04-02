@@ -1,5 +1,5 @@
-myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
-  function ($scope, $state, $stateParams,$localStorage)
+myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage', '$rootScope',
+  function ($scope, $state, $stateParams,$localStorage, $rootScope)
   {
     $scope.badLogin = true;
 
@@ -83,11 +83,13 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
  }
 
 
-// /* Facebook login */
+  /* Facebook login */
+  $rootScope.$on('event:social-sign-in-success', function(event, userDetails){
+    console.log(userDetails);
+    $localStorage.userDetails = userDetails;
 
-//   // FB.init();
-
-
+    $state.go('menu.tH5');
+  });
 
 
 

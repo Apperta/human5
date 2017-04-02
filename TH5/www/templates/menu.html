@@ -11,21 +11,22 @@
 	<ion-side-menu side="left" id="side-menu21">
 		<ion-content padding="false" style="top:0px !important;" class="side-menu-left side-menu-gradient">
 			<div class="spacer" style="width: 267.778px; height: 24.9931px;"></div>
-			<div class="profile-image">
-				<img src="img/profilePic.png" style="display: block; width: 50%; height: auto; margin-left: auto; margin-right: auto;">
+			<div style="height: 100%; width: 100%; margin-top: 5%; margin-bottom: 5%;">
+				<img src="{{profilePic}}" style="height: 100px; width: 100px; margin-left: 35%;">
 			</div>
-			<h3 id="menu-heading1" style="color:#FFFFFF;font-weight:400;text-align:center;">Donald Hanlin</h3>
-			<div class="spacer" style="width: 267.778px; height: 23.9931px;"></div>
+			<div>
+				<h3 id="menu-heading1" style="font-weight:400;text-align:center;">{{fullname}}</h3><br><br>
+			</div>
 			<ion-list id="menu-list1">
 				<ion-item class="item-icon-left  side-menu-item" id="menu-list-item1" ui-sref="menu.tH5" menu-close="">
 					<i class="icon ion-ios-medkit-outline"></i>TH5</ion-item>
-				<ion-item class="item-icon-left  side-menu-item" id="menu-list-item2" ui-sref="menu.goals" menu-close="">
-					<i class="icon ion-ios-bell"></i>Goals</ion-item>
-				<ion-item class="item-icon-left  side-menu-item" id="menu-list-item3" ui-sref="menu.statistics" menu-close="">
-					<i class="icon ion-stats-bars"></i>Statistics</ion-item>
-				<ion-item class="item-icon-left  side-menu-item" id="menu-list-item4" ui-sref="menu.profile" menu-close="">
-					<i class="icon ion-android-person"></i>Profile</ion-item>
-			</ion-list>
-		</ion-content>
-	</ion-side-menu>
-</ion-side-menus>
+					<ion-item class="item-icon-left  side-menu-item" id="menu-list-item2" ui-sref="menu.goals" menu-close="">
+						<i class="icon ion-ios-bell"></i>Goals</ion-item>
+						<ion-item class="item-icon-left  side-menu-item" id="menu-list-item3" ui-sref="menu.statistics" menu-close="">
+							<i class="icon ion-stats-bars"></i>Statistics</ion-item>
+							<ion-item class="item-icon-left  side-menu-item" id="menu-list-item4" ui-sref="menu.profile" menu-close="">
+								<i class="icon ion-android-person"></i>Profile</ion-item>
+							</ion-list>
+						</ion-content>
+					</ion-side-menu>
+				</ion-side-menus>

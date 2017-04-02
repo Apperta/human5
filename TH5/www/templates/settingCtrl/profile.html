@@ -1,19 +1,18 @@
 <ion-view title="Profile" id="page4">
   <ion-content padding="true" class="has-header">
-          <img src="img/profilePic.png" style="height: 80px; width: 80px;" class="centered">
+          <img src="{{profilePic}}" style="height: 80px; width: 80px;" class="centered">
 
-      
-    <h4 id="profile-heading2" style="color:black; margin-top: 100px; text-align: center;" >About You</h4>
+    <h4 id="profile-heading2" style="color:black; margin-top: 100px; text-align: center;" >{{fullname}}</h4>
     <form>
       <ion-list id="profile-list5">
         </label>
             <label class="item item-input" id="login-input1">
-              <span class="input-label">Height</span> 
+              <span class="input-label">Height (cm)</span> 
               <input type="text" ng-model="users[0].height" ng-model-instant/>
             </label>
 
             <label class="item item-input" id="login-input2">
-               <span class="input-label">Weight</span>
+               <span class="input-label">Weight (kg)</span>
                 <input type="text" ng-model="users[0].weight" ng-model-instant />
             </label>
       </ion-list>
@@ -23,15 +22,10 @@
               <span class="input-label">Email</span> {{users[0].email}}
               <!-- <input type="text" placeholder="{{email}}" ng-model="email"> -->
             </label>
-
-            <label class="item item-input" id="login-input2">
-               <span class="input-label">Username</span>{{users[0].username}}
-                <!-- <input type="text" placeholder="{{username}}" ng-model="username"> -->
-            </label>
       </ion-list>
     <button class="button button-block" style= "border-radius:10px;background-color:sandybrown;color:black;" ng-click="update()">Save</button>
     </form>
-    <a ui-sref="home.settings" id="profile-button8" class="button button-balanced  button-block">Settings</a>
+    <a ui-sref="menu.settings" id="profile-button8" class="button button-balanced  button-block">Settings</a>
     <button id="profile-button7" class="button button-table  button-block" ng-click="logout()">Log Out</button>
   </ion-content>
 </ion-view>

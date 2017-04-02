@@ -64,12 +64,11 @@ myapp.controller('th5Ctrl', ['$scope', '$state', '$stateParams', '$localStorage'
 nv.addGraph(function() {
   var chart = nv.models.lineChart()
                 .margin({left: 20, top:20})  //Adjust chart margins to give the x-axis some breathing room.
-                 .useInteractiveGuideline(true)  //We want nice looking tooltips and a guideline!
+                .useInteractiveGuideline(true)  //We want nice looking tooltips and a guideline!
                 //.transitionDuration(350)  //how fast do you want the lines to transition?
-                // .showLegend(true)       //Show the legend, allowing users to turn on/off line series.
+                .showLegend(true)       //Show the legend, allowing users to turn on/off line series.
                 .showYAxis(false)        //Show the y-axis
                 .showXAxis(true)        //Show the x-axis
-                // .tooltip(false)  // disable tooltips
                 ;
 
   chart.xAxis     //Chart x-axis settings
@@ -106,42 +105,15 @@ nv.addGraph(function() {
     .attr("class", "bg")
        .call(chart);          //Finalldy, render the chart!
 
-      //  var tooltip = d3.select("body")
-      //  .append("div")
-      //  .attr("class","tooltip")
-      //  .style("opacity",0.0);
-
-      //  svg.on("mouseover",function(d){
-      //           /*
-      //           鼠标移入时，
-      //           （1）通过 selection.html() 来更改提示框的文字
-      //           （2）通过更改样式 left 和 top 来设定提示框的位置
-      //           （3）设定提示框的透明度为1.0（完全不透明）
-      //           */
-
-      //           tooltip.html( "的出货量为" + "<br />" + " 百万台")
-      //           .style("left", (d3.event.pageX) + "px")
-      //           .style("top", (d3.event.pageY + 20) + "px")
-      //           .style("opacity",1.0);
-      //         })
-      //  .on("mousemove",function(d){
-      //   /* 鼠标移动时，更改样式 left 和 top 来改变提示框的位置 */
-
-      //   tooltip.style("left", (d3.event.pageX) + "px")
-      //   .style("top", (d3.event.pageY + 20) + "px");
-      // })
-      //  .on("mouseout",function(d){
-      //   /* 鼠标移出时，将透明度设定为0.0（完全透明）*/
-
-      //   tooltip.style("opacity",0.0);
-      // });
-      var configTooltip = function(d) {
+       var configTooltip = function(d) {
 
         chart.tooltip.hidden(false);
 
             // attr("style").innerHTML = 
             //   $(".nvtooltip").attr("style").replace("opacity: 0", "opacity:1")
-            var stressVal = Number($(".x-value")[0].innerHTML);
+            if($(".x-value")[0].innerHTML){
+              var stressVal = Number($(".x-value")[0].innerHTML);
+            }
             if (stressVal < 10) {
               var str = "inactive";
               var col = "steelblue";
@@ -166,12 +138,17 @@ nv.addGraph(function() {
             
             legendBox.style("background-color", col);           
           };
+// app
+          // svg.on("touchmove", configTooltip);
 
-          svg.on("touchmove", configTooltip);
+          // svg.on("touchstart", configTooltip);
 
-          svg.on("touchstart", configTooltip);
+          // svg.on("touchover", configTooltip);
 
-          svg.on("touchover", configTooltip);
+// Web
+// svg.on("mouseover", configTooltip);
+svg.on("mousemove", configTooltip);
+
 
 
 
@@ -202,8 +179,8 @@ nv.addGraph(function() {
 
   {
     values: sin,
-      // key: 'Stress Level',
-      color: 'temperature-gradient',
+    key: 'Stress Level',
+    color: 'temperature-gradient',
       area: true      //area - set to true if you want this line to turn into a filled area chart.
     }
     ];
