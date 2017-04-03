@@ -5,12 +5,13 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-var myapp = angular.module('app', ['ionic', 'app.routes', 'app.directives','app.services', 'ngStorage'])
+var myapp = angular.module('app', ['ionic', 'app.routes', 'app.directives','app.services', 'ngStorage', 'socialLogin'])
 
-.config(function($ionicConfigProvider, $sceDelegateProvider){
+.config(function($ionicConfigProvider, $sceDelegateProvider, socialProvider){
   
+  socialProvider.setFbKey({appId: "728967630605761", apiVersion: "v2.4"});
+  $sceDelegateProvider.resourceUrlWhitelist([ 'self','*://www.youtube.com/**', '*://player.vimeo.com/video/**', '*://www.facebook.com/**']);
 
-  $sceDelegateProvider.resourceUrlWhitelist([ 'self','*://www.youtube.com/**', '*://player.vimeo.com/video/**']);
 
 })
 
