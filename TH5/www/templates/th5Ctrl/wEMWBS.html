@@ -24,30 +24,43 @@
         <form id="WEMWBS-form" class="list">
             <div class="card" ng-controller="th5Ctrl">
                 <ion-card>
-                    <ion-card-content>
-                        <div id = "ques1" class="card" style="text-align: center; vertical-align: middle;">
-                            <ion-item class="item-divider" id="WEMWBS-list-item-divider1">I've been feeling optimistic about the future</ion-item>
-                            <!-- <div>
-                            <h5>I've been feeling optimistic about the future</h5>
-                        </div> -->
-                        <div class="row" >
-                            <div class="col">
-                                <input type="button" value="1" class="button button-stable question1-button">
+                    <div id = "ques1" class="card" style="text-align: center; vertical-align: middle;">
+                        <ion-item class="item-divider" id="WEMWBS-list-item-divider1">I've been feeling optimistic about the future</ion-item>
+                        <!-- <div>
+                        <h5>I've been feeling optimistic about the future</h5>
+                    </div> -->
+
+                 <!--    <label class="item item-select" id="questions-select" ng-repeat="q in qs track by $index">
+                        <span class="input-label"> 
+                            {{q}} 
+                        </span>
+                            <div class="row" >
+                                <input type="button" value="{{v}}" class="button button-stable question{{}}-button-{{v}}" ng-repeat="v in vs">
                             </div>
-                            <div class="col">
-                                <input type="button" value="2" class="button button-stable question1-button">
+                        </select>
+                    </label> -->
+
+                            <div class="row" >
+                                <div class="col">
+                                    <input type="button" value="1" class="button button-stable question1-button-1">
+                                </div>
+                                <div class="col">
+                                    <input type="button" value="2" class="button button-stable question1-button-2">
+                                </div>
+                                <div class="col">
+                                    <input type="button" value="3" class="button button-stable question1-button-3">
+                                </div>
+                                <div class="col">
+                                    <input type="button" value="4" class="button button-stable question1-button-4">
+                                </div>
+                                <div class="col">
+                                    <input type="button" value="5" class="button button-stable question1-button-5">
+                                </div>
                             </div>
-                            <div class="col">
-                                <input type="button" value="3" class="button button-stable question1-button">
-                            </div>
-                            <div class="col">
-                                <input type="button" value="4" class="button button-stable question1-button">
-                            </div>
-                            <div class="col">
-                                <input type="button" value="5" class="button button-stable question1-button">
-                            </div>
-                        </div>
-                    </div>
+
+
+
+                   
                 </ion-card-content>
             </ion-card>
             <ion-card>
@@ -56,23 +69,25 @@
                         <div>
                             <ion-item class="item-divider" id="WEMWBS-list-item-divider2">I've been feeling useful</ion-item>
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <input type="button" value="1" class="button button-stable">
-                            </div>
-                            <div class="col">
-                                <input type="button" value="2" class="button button-stable">
-                            </div>
-                            <div class="col">
-                                <input type="button" value="3" class="button button-stable">
-                            </div>
-                            <div class="col">
-                                <input type="button" value="4" class="button button-stable">
-                            </div>
-                            <div class="col">
-                                <input type="button" value="5" class="button button-stable">
+                         <div class="row" >
+                                <div class="col">
+                                    <input type="button" value="1" class="button button-stable question2-button-1">
+                                </div>
+                                <div class="col">
+                                    <input type="button" value="2" class="button button-stable question2-button-2">
+                                </div>
+                                <div class="col">
+                                    <input type="button" value="3" class="button button-stable question2-button-3">
+                                </div>
+                                <div class="col">
+                                    <input type="button" value="4" class="button button-stable question2-button-4">
+                                </div>
+                                <div class="col">
+                                    <input type="button" value="5" class="button button-stable question2-button-5">
+                                </div>
                             </div>
                         </div>
+                        
                     </div>
                 </ion-card-content>
             </ion-card>
@@ -84,19 +99,19 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <input type="button" value="1" class="button button-stable">
+                                <input type="button" value="1" class="button button-stable question3-button-1">
                             </div>
                             <div class="col">
-                                <input type="button" value="2" class="button button-stable">
+                                <input type="button" value="2" class="button button-stable question3-button-2">
                             </div>
                             <div class="col">
-                                <input type="button" value="3" class="button button-stable">
+                                <input type="button" value="3" class="button button-stable question3-button-3">
                             </div>
                             <div class="col">
-                                <input type="button" value="4" class="button button-stable">
+                                <input type="button" value="4" class="button button-stable question3-button-4">
                             </div>
                             <div class="col">
-                                <input type="button" value="5" class="button button-stable">
+                                <input type="button" value="5" class="button button-stable question3-button-5">
                             </div>
                         </div>
                     </div>
@@ -110,19 +125,19 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <input type="button" value="1" class="button button-stable">
+                                <input type="button" value="1" class="button button-stable question4-button-1">
                             </div>
                             <div class="col">
-                                <input type="button" value="2" class="button button-stable">
+                                <input type="button" value="2" class="button button-stable question4-button-2">
                             </div>
                             <div class="col">
-                                <input type="button" value="3" class="button button-stable">
+                                <input type="button" value="3" class="button button-stable question4-button-3">
                             </div>
                             <div class="col">
-                                <input type="button" value="4" class="button button-stable">
+                                <input type="button" value="4" class="button button-stable question4-button-4">
                             </div>
                             <div class="col">
-                                <input type="button" value="5" class="button button-stable">
+                                <input type="button" value="5" class="button button-stable question4-button-5">
                             </div>
                         </div>
                     </div>
@@ -136,19 +151,19 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <input type="button" value="1" class="button button-stable">
+                                <input type="button" value="1" class="button button-stable question5-button-1">
                             </div>
                             <div class="col">
-                                <input type="button" value="2" class="button button-stable">
+                                <input type="button" value="2" class="button button-stable question5-button-2">
                             </div>
                             <div class="col">
-                                <input type="button" value="3" class="button button-stable">
+                                <input type="button" value="3" class="button button-stable question5-button-3">
                             </div>
                             <div class="col">
-                                <input type="button" value="4" class="button button-stable">
+                                <input type="button" value="4" class="button button-stable question5-button-4">
                             </div>
                             <div class="col">
-                                <input type="button" value="5" class="button button-stable">
+                                <input type="button" value="5" class="button button-stable question5-button-5">
                             </div>
                         </div>
                     </div>
@@ -162,19 +177,19 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <input type="button" value="1" class="button button-stable">
+                                <input type="button" value="1" class="button button-stable question6-button-1">
                             </div>
                             <div class="col">
-                                <input type="button" value="2" class="button button-stable">
+                                <input type="button" value="2" class="button button-stable question6-button-2">
                             </div>
                             <div class="col">
-                                <input type="button" value="3" class="button button-stable">
+                                <input type="button" value="3" class="button button-stable question6-button-3">
                             </div>
                             <div class="col">
-                                <input type="button" value="4" class="button button-stable">
+                                <input type="button" value="4" class="button button-stable question6-button-4">
                             </div>
                             <div class="col">
-                                <input type="button" value="5" class="button button-stable">
+                                <input type="button" value="5" class="button button-stable question6-button-5">
                             </div>
                         </div>
                     </div>
@@ -188,26 +203,30 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <input type="button" value="1" class="button button-stable">
+                                <input type="button" value="1" class="button button-stable question7-button-1">
                             </div>
                             <div class="col">
-                                <input type="button" value="2" class="button button-stable">
+                                <input type="button" value="2" class="button button-stable question7-button-2">
                             </div>
                             <div class="col">
-                                <input type="button" value="3" class="button button-stable">
+                                <input type="button" value="3" class="button button-stable question7-button-3">
                             </div>
                             <div class="col">
-                                <input type="button" value="4" class="button button-stable">
+                                <input type="button" value="4" class="button button-stable question7-button-4">
                             </div>
                             <div class="col">
-                                <input type="button" value="5" class="button button-stable">
+                                <input type="button" value="5" class="button button-stable question7-button-5">
                             </div>
+
                         </div>
                     </div>
                 </ion-card-content>
             </ion-card>
         </div>
+         <div class="notValid">
+            You haven't fill all the sections!
+        </div>
+        <button id="wEMWBS-button9" class="button button-balanced  button-block"> Save </button>
     </form>
-    <a ui-sref="menu.goals" id="wEMWBS-button9" class="button button-balanced  button-block">Save</a>
 </ion-content>
 </ion-view>

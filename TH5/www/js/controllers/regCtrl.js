@@ -3,20 +3,7 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
   {
     $scope.badLogin = true;
 
-    if($localStorage.userId != -1)
-    {
-      $.post("http://51.140.39.138:3000/users/verify", {s_id:$localStorage.userId}, 
-          function( data ) 
-          {
-              if(data.s_id != -1)
-            {
-                $localStorage.userId = data.s_id;
-                $state.go('menu.tH5');
-            }
-          },"json"); 
-    }
-
-    if($localStorage.iteratorTodo == null)
+     if($localStorage.iteratorTodo == null)
       $localStorage.iteratorTodo = 0;
 
     if($localStorage.userId == null)
@@ -33,6 +20,26 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
     $scope.users = ([{fullname: '', height: '', weight:'', email:'', username:''}]);
     if ($localStorage.userItems == null)
         $localStorage.userItems = $scope.users;
+
+    $scope.WEMWBS = ([{va1:0,val2:0,val3:0,val4:0,val5:0,val6:0,val7:0},{va1:0,val2:0,val3:0,val4:0,val5:0,val6:0,val7:0},{va1:0,val2:0,val3:0,val4:0,val5:0,val6:0,val7:0},{va1:0,val2:0,val3:0,val4:0,val5:0,val6:0,val7:0},{va1:0,val2:0,val3:0,val4:0,val5:0,val6:0,val7:0}]);
+    if($localStorage.WEMWBS == null)
+      $localStorage.WEMWBS = $scope.WEMWBS;
+
+
+    if($localStorage.userId != -1)
+    {
+      $.post("http://51.140.39.138:3000/users/verify", {s_id:$localStorage.userId}, 
+          function( data ) 
+          {
+              if(data.s_id != -1)
+            {
+                $localStorage.userId = data.s_id;
+                $state.go('menu.tH5');
+            }
+          },"json"); 
+    }
+
+  
 
 
   $scope.loginSubmit = function()

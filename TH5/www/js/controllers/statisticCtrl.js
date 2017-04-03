@@ -181,8 +181,16 @@ function ($scope, $state, $stateParams, $localStorage) {
         });
     })
 
+
+
+
+    
+    
     // Warwick Edinburgh Stress Performance Curve Graph
     $(function(){
+        var it2 = $localStorage.WEMWBS.length;
+        console.log($localStorage.WEMWBS);
+        console.log($localStorage.WEMWBS[it2-5].val1+ $localStorage.WEMWBS[it2-5].val2 + $localStorage.WEMWBS[it2-5].val3 + $localStorage.WEMWBS[it2-5].val4 +$localStorage.WEMWBS[it2-5].val5);
         $('#lineCanvas').highcharts({
             chart: {
                 zoomType: 'xy'
@@ -229,7 +237,13 @@ function ($scope, $state, $stateParams, $localStorage) {
                 name: 'Score (Columns)',
                 type: 'column',
                 // yAxis: 1,
-                data: [24, 13, 32, 9, 22]
+                data: [
+                $localStorage.WEMWBS[it2-5].val1+ $localStorage.WEMWBS[it2-5].val2 + $localStorage.WEMWBS[it2-5].val3 + $localStorage.WEMWBS[it2-5].val4 +$localStorage.WEMWBS[it2-5].val5,
+                $localStorage.WEMWBS[it2-4].val1+ $localStorage.WEMWBS[it2-4].val2 + $localStorage.WEMWBS[it2-4].val3 + $localStorage.WEMWBS[it2-4].val4 +$localStorage.WEMWBS[it2-4].val5,
+                $localStorage.WEMWBS[it2-3].val1+ $localStorage.WEMWBS[it2-3].val2 + $localStorage.WEMWBS[it2-3].val3 + $localStorage.WEMWBS[it2-3].val4 +$localStorage.WEMWBS[it2-3].val5,
+                $localStorage.WEMWBS[it2-2].val1+ $localStorage.WEMWBS[it2-2].val2 + $localStorage.WEMWBS[it2-2].val3 + $localStorage.WEMWBS[it2-2].val4 +$localStorage.WEMWBS[it2-2].val5,
+                $localStorage.WEMWBS[it2-1].val1+ $localStorage.WEMWBS[it2-1].val2 + $localStorage.WEMWBS[it2-1].val3 + $localStorage.WEMWBS[it2-1].val4 +$localStorage.WEMWBS[it2-1].val5
+                ]
             }, {
                 name: 'Score (Line)',
                 type: 'spline',
