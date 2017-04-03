@@ -47,7 +47,7 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
               if(data.s_id != -1)
             {
                 $localStorage.userId = data.s_id;
-                $state.go('menu.tH5');
+                // $state.go('menu.tH5');
             }
           },"json"); 
     }
@@ -108,7 +108,7 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
     console.log(userDetails);
     $localStorage.userDetails = userDetails;
 
-    $state.go('menu.tH5');
+    $state.go('menu.goals');
   });
 
 

@@ -23,10 +23,7 @@ function ($scope, $state, $localStorage, $stateParams, $rootScope) {
 			$localStorage.userItems[0].weight = $scope.users[0].weight;
 
 		}
-		console.log('local: ',$localStorage.userItems[0]);
 		$scope.users= $localStorage.userItems;
-		console.log('updated scope',$scope.users[0]);
-
 	};
 	if ($localStorage.userItems[0].height != '' || $localStorage.userItems[0].weight != '') {
 		$scope.users[0].height = $localStorage.userItems[0].height;
