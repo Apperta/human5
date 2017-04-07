@@ -94,6 +94,7 @@ socialLogin.factory("socialLoginService", function($window, $rootScope){
 					break;
 				case "facebook":
 					FB.logout(function(res){
+						console.log(res);
 						$window.localStorage.removeItem('_login_provider');
 					 	$rootScope.$broadcast('event:social-sign-out-success', "success");
 					});

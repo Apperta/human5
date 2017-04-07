@@ -9,6 +9,7 @@ var myapp = angular.module('app', ['ionic', 'app.routes', 'app.directives','app.
 
 .config(function($ionicConfigProvider, $sceDelegateProvider, socialProvider){
   
+  socialProvider.setGoogleKey("215124027996-1pagi8eustvlb2hld41s152a1k4po7d2.apps.googleusercontent.com");
   socialProvider.setFbKey({appId: "728967630605761", apiVersion: "v2.4"});
   $sceDelegateProvider.resourceUrlWhitelist([ 'self','*://www.youtube.com/**', '*://player.vimeo.com/video/**', '*://www.facebook.com/**']);
 

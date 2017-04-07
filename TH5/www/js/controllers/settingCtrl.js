@@ -1,7 +1,7 @@
-myapp.controller('settingCtrl', ['$scope', '$state' ,'$localStorage' ,'$stateParams', '$rootScope', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+myapp.controller('settingCtrl', ['$scope', '$state' ,'$localStorage' ,'$stateParams', '$rootScope', 'socialLoginService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $state, $localStorage, $stateParams, $rootScope) {
+function ($scope, $state, $localStorage, $stateParams, $rootScope, socialLoginService) {
     	console.log($localStorage.profilePicUrl);
 	$scope.profilePic = $localStorage.userDetails.imageUrl;
 	$scope.fullname = $localStorage.userDetails.name;
@@ -35,12 +35,12 @@ function ($scope, $state, $localStorage, $stateParams, $rootScope) {
 	 $scope.logout = function()
     {
     	$localStorage.userId = 0;
-    	socialLoginService.logout();
-    	$rootScope.$on('event:social-sign-out-success', function(event, logoutStatus){
-    		console.log(logoutStatus);
-		})
-
+    	// socialLoginService.logout();
+    	FB.logout(function(res){ console.log(res); });
         $state.go('login');
     }
 
+	$rootScope.$on('event:social-sign-out-success', function(event, logoutStatus){
+    	console.log(logoutStatus);
+	})
 }])
