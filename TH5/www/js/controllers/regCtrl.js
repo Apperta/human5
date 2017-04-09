@@ -109,7 +109,7 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
     console.log(userDetails);
     $localStorage.userDetails = userDetails;
 
-    $state.go('menu.tH5');
+    $state.go('menu.goals');
   });
 
 
