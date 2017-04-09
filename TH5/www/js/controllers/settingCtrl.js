@@ -3,8 +3,12 @@ myapp.controller('settingCtrl', ['$scope', '$state' ,'$localStorage' ,'$statePar
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $state, $localStorage, $stateParams, $rootScope) {
     	console.log($localStorage.profilePicUrl);
-	$scope.profilePic = $localStorage.userDetails.imageUrl;
-	$scope.fullname = $localStorage.userDetails.name;
+    	if($localStorage.userDetails != null)
+    	{
+		    $scope.profilePic = $localStorage.userDetails.imageUrl;
+			$scope.fullname   = $localStorage.userDetails.name;		
+    	}
+	
 //$scope.users = ([{fullname: 'Donald Hanlin', height: '180cm', weight:'67kg', email:'donald166@gmail.com', username:'donald166'}]);
 	$scope.users = [{fullname: '', height: '', weight:'', email:'', username:''}];
     if($localStorage.userItems != null){
