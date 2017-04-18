@@ -1,20 +1,23 @@
+
 myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage', '$rootScope',
   function ($scope, $state, $stateParams,$localStorage, $rootScope)
   {
     $scope.badLogin = true;
 
-    // if($localStorage.userId != -1)
-    // {
-    //   $.post("http://51.140.39.138:3000/users/verify", {s_id:$localStorage.userId}, 
-    //       function( data ) 
-    //       {
-    //           if(data.s_id != -1)
-    //         {
-    //             $localStorage.userId = data.s_id;
-    //             $state.go('menu.tH5');
-    //         }
-    //       },"json"); 
-    // }
+    if($localStorage.userId != -1)
+    {
+      $.post("http://51.140.39.138:3000/users/verify", {s_id:$localStorage.userId}, 
+          function( data ) 
+          {
+              if(data.s_id != -1)
+            {
+                $localStorage.userId = data.s_id;
+                $state.go('menu.tH5');
+            }
+          },"json"); 
+    }
+
+    $localStorage.temp = -1;
 
     if($localStorage.iteratorTodo == null)
       $localStorage.iteratorTodo = 0;
@@ -34,10 +37,13 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
     if ($localStorage.userItems == null)
         $localStorage.userItems = $scope.users;
 
-    $scope.WEMWBS = ([{va1:0,val2:0,val3:0,val4:0,val5:0,val6:0,val7:0},{va1:0,val2:0,val3:0,val4:0,val5:0,val6:0,val7:0},{va1:0,val2:0,val3:0,val4:0,val5:0,val6:0,val7:0},{va1:0,val2:0,val3:0,val4:0,val5:0,val6:0,val7:0},{va1:0,val2:0,val3:0,val4:0,val5:0,val6:0,val7:0}]);
+    $scope.YDC  = ([{val:0},{val:0},{val:0},{val:0},{val:0}]);
+    if($localStorage.YDC == null)
+      $localStorage.YDC = $scope.YDC;
+
+     $scope.WEMWBS = ([{va1:0,val2:0,val3:0,val4:0,val5:0,val6:0,val7:0},{va1:0,val2:0,val3:0,val4:0,val5:0,val6:0,val7:0},{va1:0,val2:0,val3:0,val4:0,val5:0,val6:0,val7:0},{va1:0,val2:0,val3:0,val4:0,val5:0,val6:0,val7:0},{va1:0,val2:0,val3:0,val4:0,val5:0,val6:0,val7:0}]);
     if($localStorage.WEMWBS == null)
       $localStorage.WEMWBS = $scope.WEMWBS;
-
 
     if($localStorage.userId != -1)
     {
@@ -47,7 +53,7 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
               if(data.s_id != -1)
             {
                 $localStorage.userId = data.s_id;
-                // $state.go('menu.tH5');
+                $state.go('menu.tH5');
             }
           },"json"); 
     }

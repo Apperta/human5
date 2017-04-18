@@ -3,10 +3,14 @@
     <form ng-submit="formSubmit()">
         <div id="chart">
                 <svg width="750" height="1000" />
+                    <!-- <circle cx="25" cy="25" r="25" fill="purple" /> -->
+                </svg>
         <h5 style="text-align: center;margin-bottom: 10px;">Stress Level</h5>
         </div>
 
-        <button type="submit" id="perfButton" style= "border-radius:10px;background-color:deepskyblue;color:white;" class ="button button-block" ng-click="goWEMWBSPage()">Rate Yourself</button>
+        <div class="notSelected"> <br> Please tap on the picture! </div>
+        <button type="submit" id="perfButton" style= "border-radius:10px;background-color:deepskyblue;color:white;" class ="button button-block" ng-click="goWEMWBSPage()">Save and Go to WEMWBS</button>
+        <button type="submit" id="perfButton" style= "border-radius:10px;background-color:deepskyblue;color:white;" class ="button button-block" ng-click="skipToWEMWBSPage()">Skip and Go to WEMWBS</button>
     </form>
 
     <div id="performance-button-bar4" class="button-bar"></div>

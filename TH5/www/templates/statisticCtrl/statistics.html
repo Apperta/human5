@@ -3,6 +3,18 @@
 <!-- 5 attempts / 5 days / 5 months -->
     <ion-card>
         <ion-card-content>
+
+            <select id="case" class="form-control" style="margin:auto; width:50%">
+                <option selected value="0"> Last five ratings</option>
+                <option value="1"> Last five days</option>
+                <option value="2"> Last five weeks</option>
+            </select>
+        </ion-card-content>
+    </ion-card>
+
+
+    <ion-card>
+        <ion-card-content>
             <div id = "columnCanvas" class="card"></div>
         </ion-card-content>
     </ion-card>

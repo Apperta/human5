@@ -154,3 +154,8 @@ li input[type="checkbox"] {
   text-align: center;
   color: red;
 }
+
+.notSelected {
+  text-align: center;
+  color: red;
+}
