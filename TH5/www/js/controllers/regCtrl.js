@@ -4,26 +4,13 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
   {
     $scope.badLogin = true;
 
-    // if($localStorage.userId != -1)
-    // {
-    //   $.post("http://51.140.39.138:3000/users/verify", {s_id:$localStorage.userId}, 
-    //       function( data ) 
-    //       {
-    //           if(data.s_id != -1)
-    //         {
-    //             $localStorage.userId = data.s_id;
-    //             $state.go('menu.tH5');
-    //         }
-    //       },"json"); 
-    // }
-
     $localStorage.temp = -1;
 
     if($localStorage.iteratorTodo == null)
       $localStorage.iteratorTodo = 0;
 
     if($localStorage.userId == null)
-      $localStorage.userId = -1;
+      $localStorage.userId = 0;
 
     $scope.selfRateList = ([{mind:0, movement: 0, nutrition: 0, world:0, body:0}, {mind:0, movement: 0, nutrition: 0, world:0, body:0},{mind:0, movement: 0, nutrition: 0, world:0, body:0},{mind:0, movement: 0, nutrition: 0, world:0, body:0},{mind:0, movement: 0, nutrition: 0, world:0, body:0}]);
     if($localStorage.rateList == null)
@@ -51,22 +38,19 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
     if ($localStorage.localLogin == null)
       $localStorage.localLogin = $scope.localLogin;
 
-
-    
-    // if($localStorage.userId != -1)
-    // {
-    //   $.post("http://51.140.39.138:3000/users/verify", {s_id:$localStorage.userId}, 
-    //     function( data ) 
-    //     {
-    //       if(data.s_id != -1)
-    //       {
-    //         $localStorage.userId = data.s_id;
-    //         $state.go('menu.tH5');
-    //       }
-    //     },"json"); 
-    // }
-
-
+    console.log($localStorage.userId);
+    if($localStorage.userId != 0)
+    {
+      $.post("http://51.140.39.138:3000/users/verify", {s_id:$localStorage.userId}, 
+          function( data ) 
+          {
+              if(data.s_id != -1)
+            {
+                $localStorage.userId = data.s_id;
+                $state.go('menu.tH5');
+            }
+          },"json"); 
+    }
 
 
     $scope.loginSubmit = function()
@@ -105,7 +89,6 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
             if (data.s_id != -1)
             {
               $localStorage.userId = data.s_id;
-              console.log("MUIE!");
               $state.go('menu.tH5');
             }
             if (data.s_id == -1)
@@ -146,11 +129,12 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
 
 
     /* Facebook login */
-    $rootScope.$on('event:social-sign-in-success', function(event, userDetails){
+    $rootScope.$on('event:social-sign-in-success', function(event, userDetails)
+    {
       console.log(userDetails);
       $localStorage.userDetails = userDetails;
 
-      $state.go('menu.goals');
+      $state.go('menu.tH5');
     });
 
 

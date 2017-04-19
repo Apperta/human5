@@ -8,8 +8,8 @@ function ($scope, $state, $localStorage, $stateParams, $rootScope, socialLoginSe
 		$scope.profilePic = $localStorage.userDetails.imageUrl;
 		$scope.fullname   = $localStorage.userDetails.name;		
 	}
-	if($scope.profilePic == ""){
-		console.log("yo");
+	if($scope.profilePic == "")
+	{
 		$scope.profilePic = "../img/profilePic.png";
 	}
 	
@@ -26,20 +26,24 @@ function ($scope, $state, $localStorage, $stateParams, $rootScope, socialLoginSe
 		$scope.users[0].email = $localStorage.localLogin[0].email;
 	}
 
+
 	$scope.update = function()
 	{
-		if ($scope.users[0].height && $scope.users[0].height != '' ) {
+		if ($scope.users[0].height && $scope.users[0].height != '' ) 
+		{
 			$localStorage.userItems[0].height = $scope.users[0].height;
 
 		}
-		if ($scope.users[0].weight && $scope.users[0].weight != '' ) {
+		if ($scope.users[0].weight && $scope.users[0].weight != '' ) 
+		{
 			$localStorage.userItems[0].weight = $scope.users[0].weight;
 
 		}
 		$scope.users= $localStorage.userItems;
 	};
 
-	if ($localStorage.userItems[0].height != '' || $localStorage.userItems[0].weight != '') {
+	if ($localStorage.userItems[0].height != '' || $localStorage.userItems[0].weight != '') 
+	{
 		$scope.users[0].height = $localStorage.userItems[0].height;
 		$scope.users[0].weight = $localStorage.userItems[0].weight;
 	}
@@ -57,9 +61,12 @@ function ($scope, $state, $localStorage, $stateParams, $rootScope, socialLoginSe
     	// socialLoginService.logout();
     	// FB.logout(function(res){ console.log(res); });
     	
-    	FB.getLoginStatus(function(response) {
-    		if (response && response.status === 'connected') {
-    			FB.logout(function(response) {
+    	FB.getLoginStatus(function(response) 
+    	{
+    		if (response && response.status === 'connected') 
+    		{
+    			FB.logout(function(response) 
+    			{
     				console.log(response);
     				document.location.reload();
     			});
@@ -70,7 +77,9 @@ function ($scope, $state, $localStorage, $stateParams, $rootScope, socialLoginSe
     	$state.go('login');
     }
 
-    $rootScope.$on('event:social-sign-out-success', function(event, logoutStatus){
+
+    $rootScope.$on('event:social-sign-out-success', function(event, logoutStatus)
+    {
     	console.log(logoutStatus);
     })
 }])
