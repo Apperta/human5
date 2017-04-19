@@ -270,7 +270,8 @@ myapp.controller('th5Ctrl', ['$scope', '$state', '$stateParams', '$localStorage'
            .style("stroke-width", "2")
            .style("stroke", "rgb(0,0,0)");
 
-           $localStorage.temp = stressVal;
+           // $localStorage.temp = stressVal;
+           $localStorage.temp = parseInt((d3.mouse(this)[0] - 22 )/ 6.16);
     });
 
     nv.utils.windowResize(function() { chart.update() });
