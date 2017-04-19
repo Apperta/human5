@@ -95,7 +95,6 @@ myapp.controller('th5Ctrl', ['$scope', '$state', '$stateParams', '$localStorage'
           {
               $(".notValid").show();
           }
-
     });
 
 
@@ -133,6 +132,7 @@ myapp.controller('th5Ctrl', ['$scope', '$state', '$stateParams', '$localStorage'
  
     $scope.goWEMWBSPage = function()
     {
+      $scope.YDC = $localStorage.YDC;
       if ($localStorage.temp >= 0 && $localStorage.temp <= 50)
       {
             $scope.YDC.push
@@ -140,16 +140,15 @@ myapp.controller('th5Ctrl', ['$scope', '$state', '$stateParams', '$localStorage'
                 val:parseInt($localStorage.temp),
                 date: (new Date()).toString()
             });
-            $localStorage.YDC = $scope.YDC;
             $(".notSelected").hide();
-            $localStorage.temp = -1;
             $state.go('menu.wEMWBS');
+            $localStorage.YDC = $scope.YDC;
       }
       else
       {
          $(".notSelected").show();
       }
-
+  
     }
 
     $scope.skipToWEMWBSPage= function()
@@ -158,128 +157,125 @@ myapp.controller('th5Ctrl', ['$scope', '$state', '$stateParams', '$localStorage'
     }
 
 
-  
 
-nv.addGraph(function() 
-{
-  var chart = nv.models.lineChart()
-                .margin({left: 20, top:20})  //Adjust chart margins to give the x-axis some breathing room.
-                .useInteractiveGuideline(true)  //We want nice looking tooltips and a guideline!
-                .showLegend(true)       //Show the legend, allowing users to turn on/off line series.
-                .showYAxis(false)        //Show the y-axis
-                .showXAxis(true);        //Show the x-axis
 
-  chart.xAxis     //Chart x-axis settings
-       .tickFormat(d3.format(',r'))
-       .ticks(5);
- 
-  chart.yAxis     //Chart y-axis settings
-      .tickFormat(d3.format('.02f'))
-      .tickPadding(10);
-
-  var data = generatePoints();        //Set up data
-  var svg = d3.select('svg');    //Select the <svg> element you want to render the chart in.   
-
-  svg.append("linearGradient")
-  .attr("id", "temperature-gradient")
-  .attr("gradientUnits", "userSpaceOnUse")
-  .selectAll("stop")
-  .data([
-    {offset: "0%", color: "steelblue"},
-    {offset: "30%", color: "green"},
-    {offset: "50%", color: "yellow"},
-    {offset: "100%", color: "red"}
-    ])
-  .enter().append("stop")
-  .attr("offset", function(d) { return d.offset; })
-  .attr("stop-color", function(d) { return d.color; });
-
-    svg.datum(data)         //Populate the <svg> element with chart data...
-    .attr("class", "xAxis")
-    .attr("class", "axisLabel")
-    .attr("class", "bg")
-    .call(chart);          //Finalldy, render the chart!
-
-svg.on("click", function()
+  nv.addGraph(function() 
   {
-      chart.tooltip.hidden(false);
+    var chart = nv.models.lineChart()
+                  .margin({left: 20, top:20})
+                  .useInteractiveGuideline(true)  
+                  .showLegend(true)       
+                  .showYAxis(false)        
+                  .showXAxis(true);        
 
-      if($(".x-value")[0].innerHTML)
-      {
-        var stressVal = Number($(".x-value")[0].innerHTML);
-      }
-      if (stressVal < 10) 
-      {
-        var str = "inactive";
-        var col = "steelblue";
-      }
-      else if (stressVal < 20) 
-      {
-        var str = "laidback";
-        var col = "green";
-      }
-      else if (stressVal < 30) 
-      {
-        var str = "fatigue";
-        var col = "lightgreen";
-      }
-      else if (stressVal < 40) 
-      {
-        var str = "exhaustion";
-        var col = "yellow";
-      } 
-      else if (stressVal <50) 
-      {
-        var str = "anxiety/panic/anger";
-        var col = "orange";
-      } 
-      else 
-      {
-        var str = "breakdown";
-        var col = "red";
-      } 
+    chart.xAxis     //Chart x-axis settings
+         .tickFormat(d3.format(',r'))
+         .ticks(5);
+   
+    chart.yAxis     //Chart y-axis settings
+        .tickFormat(d3.format('.02f'))
+        .tickPadding(10);
 
-      $(".key")[0].innerHTML = str;
-      var legendBox = d3.select(".legend-color-guide div");
-      
-      legendBox.style("background-color", col);  
+    var data = generatePoints();        //Set up data
+    var svg = d3.select('svg');    //Select the <svg> element you want to render the chart in.   
+
+    svg.append("linearGradient")
+    .attr("id", "temperature-gradient")
+    .attr("gradientUnits", "userSpaceOnUse")
+    .selectAll("stop")
+    .data([
+      {offset: "0%", color: "steelblue"},
+      {offset: "30%", color: "green"},
+      {offset: "50%", color: "yellow"},
+      {offset: "100%", color: "red"}
+      ])
+    .enter().append("stop")
+    .attr("offset", function(d) { return d.offset; })
+    .attr("stop-color", function(d) { return d.color; });
+
+      svg.datum(data)         //Populate the <svg> element with chart data...
+      .attr("class", "xAxis")
+      .attr("class", "axisLabel")
+      .attr("class", "bg")
+      .call(chart);          //Finalldy, render the chart!
+
+  svg.on("click", function()
+    {
+        chart.tooltip.hidden(false);
+
+        if($(".x-value")[0].innerHTML)
+        {
+          var stressVal = Number($(".x-value")[0].innerHTML);
+        }
+        if (stressVal < 10) 
+        {
+          var str = "inactive";
+          var col = "steelblue";
+        }
+        else if (stressVal < 20) 
+        {
+          var str = "laidback";
+          var col = "green";
+        }
+        else if (stressVal < 30) 
+        {
+          var str = "fatigue";
+          var col = "lightgreen";
+        }
+        else if (stressVal < 40) 
+        {
+          var str = "exhaustion";
+          var col = "yellow";
+        } 
+        else if (stressVal <50) 
+        {
+          var str = "anxiety/panic/anger";
+          var col = "orange";
+        } 
+        else 
+        {
+          var str = "breakdown";
+          var col = "red";
+        } 
+
+        $(".key")[0].innerHTML = str;
+        var legendBox = d3.select(".legend-color-guide div");
+        
+        legendBox.style("background-color", col);  
 
 
-      // if(parseInt((d3.mouse(this)[0] - 22 )/ 6.16) < 18)
-      // console.log( parseInt((d3.mouse(this)[0] - 22 )/ 6.16));   
+        // if(parseInt((d3.mouse(this)[0] - 22 )/ 6.16) < 18)
+        // console.log( parseInt((d3.mouse(this)[0] - 22 )/ 6.16));   
 
-      if($("#lineChose").length)
-      {
-          $("#lineChose").remove();
-      }
-      
-      svg.append("line")
-         .attr("x1", function()
-          {
-            return d3.mouse(this)[0];
-          })
-         .attr("y1", "30")
-         .attr("x2", function()
-          {
-            return d3.mouse(this)[0];
-          })
-         .attr("y2", "423")
-         .attr("class", "xAxis")
-         .attr("class", "axisLabel")
-         .attr("class", "bg")
-         .attr("id", "lineChose")
-         .style("stroke-width", "2")
-         .style("stroke", "rgb(0,0,0)");
+        if($("#lineChose").length)
+        {
+            $("#lineChose").remove();
+        }
+        
+        svg.append("line")
+           .attr("x1", function()
+            {
+              return d3.mouse(this)[0];
+            })
+           .attr("y1", "30")
+           .attr("x2", function()
+            {
+              return d3.mouse(this)[0];
+            })
+           .attr("y2", "423")
+           .attr("class", "xAxis")
+           .attr("class", "axisLabel")
+           .attr("class", "bg")
+           .attr("id", "lineChose")
+           .style("stroke-width", "2")
+           .style("stroke", "rgb(0,0,0)");
 
-           console.log(stressVal);
-           console.log($(".x-value")[0].innerHTML);
-           console.log($localStorage.temp);
            $localStorage.temp = stressVal;
-  });
+    });
 
-  nv.utils.windowResize(function() { chart.update() });
-  return chart;
-});
+    nv.utils.windowResize(function() { chart.update() });
+    return chart;
+  });
 
 
 function generatePoints()
