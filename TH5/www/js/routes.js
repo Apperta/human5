@@ -56,6 +56,14 @@ angular.module('app.routes', ['ionicUIRouter'])
     controller: 'regCtrl'    
   })
 
+  .state('offLogin', 
+  {
+    url: '/page7',
+    cache: false,
+    templateUrl: 'templates/regCtrl/offLogin.html',
+    controller: 'regCtrl'    
+  })
+
   .state('signup', {
     url: '/page6',
     cache: false,

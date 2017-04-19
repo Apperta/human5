@@ -1,4 +1,4 @@
-<ion-view title="Login" hide-nav-bar="true" cache-view="false" nav-transition="none" id="page6" style="background-color:#FFFFFF;">
+<ion-view title="Offline Login" hide-nav-bar="true" cache-view="false" nav-transition="none" id="page7" style="background-color:#FFFFFF;">
     <ion-content padding="true" style="background: url(img/ZMmVLi7YR1y1OaEIyBtv_3.png) no-repeat center;background-size:cover;" class="manual-ios-statusbar-padding" scroll="false">
         <form id="login-form1" class="list center-form" ng-submit="loginSubmit()" ng-controller="regCtrl">
             <div>
@@ -20,11 +20,8 @@
                 Wrong username or password!
             </p>
             <button type="submit" class="button button-positive button-block">Log in</button>
-            <button g-login type="button" class="button button-block">Login with Google</button>
-            <button fb-login type="button" class="button button-block">Login with Facebook</button>
-            <button type="button" class="button button-block" ui-sref="offLogin">Offline Login</button>
 
-            <a ui-sref="signup" id="login-button4" class="button button-positive  button-block button-clear">Or create an account</a>
+            <a ui-sref="login" id="login-button4" class="button button-positive  button-block button-clear">Try online login?</a>
         </form>
     </ion-content>
 </ion-view>
