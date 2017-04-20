@@ -120,6 +120,21 @@ angular.module('app.routes', ['ionicUIRouter'])
     }
   })
 
+  .state('menu.groupGoal', {
+    url: '/page22',
+    cache: false,
+    views: {
+      'side-menu21': {
+        templateUrl: 'templates/goalsCtrl/gruopGoal.html',
+        controller: 'goalsCtrl'
+      },
+      'side-menu21': {
+        templateUrl: 'templates/goalsCtrl/groupGoal.html',
+        controller: 'goalsCtrl'
+      }
+    }
+  })
+
   .state('menu.settings', {
     url: '/page12',
     cache: false,

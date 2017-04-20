@@ -24,6 +24,10 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
     else
         $scope.todos = $localStorage.todolist;
 
+    $scope.sharedGoals = ([]);
+    if($localStorage.sharedGoals == null)
+      $localStorage.sharedGoals = $scope.sharedGoals;
+
     $scope.users = ([{fullname: '', height: '', weight:'', email:'', username:''}]);
     if ($localStorage.userItems == null)
       $localStorage.userItems = $scope.users;
