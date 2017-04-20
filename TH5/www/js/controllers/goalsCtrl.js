@@ -15,56 +15,57 @@ function ($scope, $state, $stateParams,$localStorage) {
   if($localStorage.sharedGoals == null)
     $localStorage.sharedGoals = $scope.sharedGoals;
 
-  $scope.types = [
-  "World",
-  "Mind",
-  "Body",
-  "Nutrition",
-  "Movement"
-  ];
+  $scope.types = ["World","Mind","Body","Nutrition","Movement"];
 
   $scope.currentIndex;
   var currentTodoGlobal;
-  $scope.edit = function(todo, index){
-    console.log("Edit Item: " + todo.text);
+  $scope.edit = function(todo, index)
+  {
+    // console.log("Edit Item: " + todo.text);
     $state.go('menu.setGoals');
     $localStorage.currentTodo = angular.copy($localStorage.todolist[index]);
     $localStorage.iteratorTodo = index;
-    console.log('iteratorTodo:',$localStorage.iteratorTodo);
-    console.log($localStorage.currentTodo);
-
+    // console.log('iteratorTodo:',$localStorage.iteratorTodo);
+    // console.log($localStorage.currentTodo);
 
   };
 
-  $scope.saveTodo = function(){
+  $scope.saveTodo = function()
+  {
     $localStorage.currentTodo.type = $scope.type;   
     $localStorage.currentTodo.deadline = $('#datePicker').find("input").val();
-    console.log($localStorage.currentTodo.deadline);
+    // console.log($localStorage.currentTodo.deadline);
     $localStorage.todolist[$localStorage.iteratorTodo] = $localStorage.currentTodo;
-    console.log('local this item:',$localStorage.todolist[$localStorage.iteratorTodo]);
-    console.log("saved type: " + $localStorage.todolist[$localStorage.iteratorTodo].type + ", deadline:" + $localStorage.todolist[$localStorage.iteratorTodo].deadline);
+    // console.log('local this item:',$localStorage.todolist[$localStorage.iteratorTodo]);
+    // console.log("saved type: " + $localStorage.todolist[$localStorage.iteratorTodo].type + ", deadline:" + $localStorage.todolist[$localStorage.iteratorTodo].deadline);
     $scope.todos = $localStorage.todolist;
     $state.go("menu.goals");
 
-
-
   };
+
   if(localStorage.todolist != null)
   {
     $scope.selected = $localStorage.todolist[$localStorage.iteratorTodo].type;
     $scope.deadline = $localStorage.todolist[$localStorage.iteratorTodo].deadline;
   }
-  $scope.removeTodo = function(todo){
+
+
+  $scope.removeTodo = function(todo)
+  {
     $scope.todos.splice($scope.todos.indexOf(todo),1);
   };
 
 
 
-  $scope.addTodo = function(){
-    if ($scope.todoText && $scope.todoText!= '') {
-      $scope.todos.push({
-        text:$scope.todoText,
-        done:false
+  $scope.addTodo = function()
+  {
+    if ($scope.todoText && $scope.todoText!= '') 
+    {
+      $scope.todos.push
+      ({
+            text:$scope.todoText,
+            date: (new Date()).toString(),
+            done:false
       });
       $scope.todoText ='';
       $localStorage.todolist = $scope.todos;
@@ -72,34 +73,87 @@ function ($scope, $state, $stateParams,$localStorage) {
     }
   };
 
-  $(document).ready(function($) {
-    $('#datePicker')
-    .datepicker({
+  $(document).ready(function($)
+   {
+
+    $('#datePicker').datepicker
+    ({
       orientation: 'top left',
       format: 'mm-dd-yyyy',
       todayHighlight: true
     })
+
   });
 
 
    //Group goals
-   $scope.share = function(todo){
-    $.post("http://51.140.39.138:3000/sharedGoals/verify", {goal:todo}, 
-        function( data ) 
-        {
-          
-        },"json"); 
-   }
+   $scope.share = function(todo)
+   {
+      $.post("http://51.140.39.138:3000/shareGoal",
+          {
+                 goal       :todo.text, 
+                 deadline   :todo.deadline, 
+                 category   :todo.type, 
+                 date       :getDate($scope.date)
+           },"json"); 
+     }
 
-   $scope.tickAndAdd = function(goal){
-    $scope.sharedGoals.splice($scope.sharedGoals.indexOf(goal),1);
-    $scope.sharedGoals.push({
-      text:$scope.goal.text,
-      done:false,
-      type:$scope.goal.type,
-      deadline:$scope.goal.deadline
-    });
-    $localStorage.sharedGoals = $scope.sharedGoals;
-  }
+     $scope.tickAndAdd = function(goal)
+     {
+        $scope.sharedGoals.splice($scope.sharedGoals.indexOf(goal),1);
+        $scope.sharedGoals.push
+          ({
+              text:$scope.goal.text,
+              done:false,
+              type:$scope.goal.type,
+              deadline:$scope.goal.deadline
+           });
+        $localStorage.sharedGoals = $scope.sharedGoals;
+      }
+
+
+
+   function getDate(date)
+   {
+        var result = date;
+        
+        if(date != undefined)
+        {
+            year = date.substring(11,15);
+            var month;
+            day  = date.substring(8,10);
+            time = date.substring(16,24);
+
+            if(date.substring(4,7) == "Jan")
+            month = "01";
+            if(date.substring(4,7) == "Feb")
+            month = "02";
+            if(date.substring(4,7) == "Mar")
+            month = "03";
+            if(date.substring(4,7) == "Apr")
+            month = "04";
+            if(date.substring(4,7) == "May")
+            month = "05";
+            if(date.substring(4,7) == "Jun")
+            month = "06";
+            if(date.substring(4,7) == "Jul")
+            month = "07";
+            if(date.substring(4,7) == "Aug")
+            month = "08";
+            if(date.substring(4,7) == "Sept")
+            month = "09";
+            if(date.substring(4,7) == "Sep")
+            month = "09";
+            if(date.substring(4,7) == "Oct")
+            month = "10";
+            if(date.substring(4,7) == "Nov")
+            month = "11";
+            if(date.substring(4,7) == "Dec")
+            month = "12";
+
+            result = year + "-" + month + "-" + day + " " + time;
+        }
+        return result;
+     }
 
 }])

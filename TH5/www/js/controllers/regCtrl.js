@@ -62,7 +62,10 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
           {
             $state.go('menu.tH5');
           } 
-          return sync(data.id[0].user_id);
+          if($localStorage.synchronize == 1)
+          {
+              return sync(data.id[0].user_id);            
+          }
         }
         ,"json");
     }
@@ -241,16 +244,19 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
              },"json");
         } 
 
+
         for (var i = $scope.todos.length - 1; i >= 0; i--) {
           $.post("http://51.140.39.138:3000/sync/goals", 
             {
-               user_id    : userID, 
-               goal       :$scope.todos[i].goal, 
+               user_id    : userID,  
+               goal       :$scope.todos[i].text, 
                deadline   :$scope.todos[i].deadline, 
-               category   :$scope.WEMWBS[i].category, 
-               date       :getDate($scope.YDC[i].date)
+               category   :$scope.todos[i].type, 
+               date       :getDate($scope.todos[i].date)
 
              },"json");
+        console.log($scope.todos[i])
+
         }
       }
 
