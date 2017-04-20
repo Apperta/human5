@@ -11,7 +11,7 @@ function ($scope, $state, $stateParams,$localStorage) {
     $scope.todos = $localStorage.todolist;
   }
 
-  $scope.sharedGoals = ([]);
+  $scope.sharedGoals = [];
   if($localStorage.sharedGoals == null)
     $localStorage.sharedGoals = $scope.sharedGoals;
 
@@ -63,9 +63,9 @@ function ($scope, $state, $stateParams,$localStorage) {
     {
       $scope.todos.push
       ({
-            text:$scope.todoText,
-            date: (new Date()).toString(),
-            done:false
+        text:$scope.todoText,
+        date: (new Date()).toString(),
+        done:false
       });
       $scope.todoText ='';
       $localStorage.todolist = $scope.todos;
@@ -74,7 +74,7 @@ function ($scope, $state, $stateParams,$localStorage) {
   };
 
   $(document).ready(function($)
-   {
+  {
 
     $('#datePicker').datepicker
     ({
@@ -89,71 +89,77 @@ function ($scope, $state, $stateParams,$localStorage) {
    //Group goals
    $scope.share = function(todo)
    {
-      $.post("http://51.140.39.138:3000/shareGoal",
-          {
-                 goal       :todo.text, 
-                 deadline   :todo.deadline, 
-                 category   :todo.type, 
-                 date       :getDate($scope.date)
-           },"json"); 
-     }
+    $.post("http://51.140.39.138:3000/shareGoal",
+    {
+     goal       :todo.text, 
+     deadline   :todo.deadline, 
+     category   :todo.type, 
+     date       :getDate($scope.date)
+   },"json"); 
+    console.log("shared");
+  }
 
-     $scope.tickAndAdd = function(goal)
-     {
-        $scope.sharedGoals.splice($scope.sharedGoals.indexOf(goal),1);
-        $scope.sharedGoals.push
-          ({
-              text:$scope.goal.text,
-              done:false,
-              type:$scope.goal.type,
-              deadline:$scope.goal.deadline
-           });
-        $localStorage.sharedGoals = $scope.sharedGoals;
-      }
+  $.getJSON("http://51.140.39.138:3000/getGoals", function(data){
+    console.log(data[0]);
+    $scope.sharedGoals = data;
+    console.log("json:" + $scope.sharedGoals[0]);
+    $localStorage.sharedGoals = $scope.sharedGoals;
+  });
 
+  $scope.tickAndAdd = function(goal)
+  {
+    $scope.sharedGoals.splice($scope.sharedGoals.indexOf(goal),1);
+    $scope.todos.push
+    ({
+      text:goal.goal,
+      done:false,
+      type:goal.category,
+      deadline:goal.deadline
+    });
+    $localStorage.todolist = $scope.todos;
+  }
 
+  function getDate(date)
+  {
+    var result = date;
 
-   function getDate(date)
-   {
-        var result = date;
-        
-        if(date != undefined)
-        {
-            year = date.substring(11,15);
-            var month;
-            day  = date.substring(8,10);
-            time = date.substring(16,24);
+    if(date != undefined)
+    {
+      year = date.substring(11,15);
+      var month;
+      day  = date.substring(8,10);
+      time = date.substring(16,24);
 
-            if(date.substring(4,7) == "Jan")
-            month = "01";
-            if(date.substring(4,7) == "Feb")
-            month = "02";
-            if(date.substring(4,7) == "Mar")
-            month = "03";
-            if(date.substring(4,7) == "Apr")
-            month = "04";
-            if(date.substring(4,7) == "May")
-            month = "05";
-            if(date.substring(4,7) == "Jun")
-            month = "06";
-            if(date.substring(4,7) == "Jul")
-            month = "07";
-            if(date.substring(4,7) == "Aug")
-            month = "08";
-            if(date.substring(4,7) == "Sept")
-            month = "09";
-            if(date.substring(4,7) == "Sep")
-            month = "09";
-            if(date.substring(4,7) == "Oct")
-            month = "10";
-            if(date.substring(4,7) == "Nov")
-            month = "11";
-            if(date.substring(4,7) == "Dec")
-            month = "12";
+      if(date.substring(4,7) == "Jan")
+        month = "01";
+      if(date.substring(4,7) == "Feb")
+        month = "02";
+      if(date.substring(4,7) == "Mar")
+        month = "03";
+      if(date.substring(4,7) == "Apr")
+        month = "04";
+      if(date.substring(4,7) == "May")
+        month = "05";
+      if(date.substring(4,7) == "Jun")
+        month = "06";
+      if(date.substring(4,7) == "Jul")
+        month = "07";
+      if(date.substring(4,7) == "Aug")
+        month = "08";
+      if(date.substring(4,7) == "Sept")
+        month = "09";
+      if(date.substring(4,7) == "Sep")
+        month = "09";
+      if(date.substring(4,7) == "Oct")
+        month = "10";
+      if(date.substring(4,7) == "Nov")
+        month = "11";
+      if(date.substring(4,7) == "Dec")
+        month = "12";
 
-            result = year + "-" + month + "-" + day + " " + time;
-        }
-        return result;
-     }
+      result = year + "-" + month + "-" + day + " " + time;
+    }
+    return result;
+  }
 
 }])

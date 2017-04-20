@@ -13,15 +13,15 @@
             <ion-item ng-repeat="goal in sharedGoals" item="todo" class="item-remove-animate noPadding">
                 <div class="row">
                     <div class="col col-lg-2">
-                        {{goal.text}} 
+                        {{goal.goal}} 
                     </div>
                     <div class="col col-lg-2">&nbsp;</div>
                     <div class="col col-lg-2" align="right">
-                        {{goal.type}} {{goal.deadline}}
+                        {{goal.category}} {{goal.deadline}}
                     </div>
                 </div>
 
-                <ion-delete-button class="ion-minus-circled" ng-click="tickAndAdd(goal)">
+                <ion-delete-button class="ion-plus-circled" ng-click="tickAndAdd(goal)">
                 </ion-delete-button>
             </ion-item>
           </ion-list>
