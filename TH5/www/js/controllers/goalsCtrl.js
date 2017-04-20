@@ -94,7 +94,7 @@ function ($scope, $state, $stateParams,$localStorage) {
                  goal       :todo.text, 
                  deadline   :todo.deadline, 
                  category   :todo.type, 
-                 date       :getDate($scope.date)
+                 date       :getDate(todo.date)
            },"json"); 
      }
 
