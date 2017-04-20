@@ -3,14 +3,17 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
   function ($scope, $state, $stateParams,$localStorage, $rootScope)
   {
     $scope.badLogin = true;
-
     $localStorage.temp = -1;
-
+    
     if($localStorage.iteratorTodo == null)
       $localStorage.iteratorTodo = 0;
 
     if($localStorage.userId == null)
       $localStorage.userId = 0;
+
+    
+    if($localStorage.synchronize == null)
+      $localStorage.synchronize = false;
 
     $scope.selfRateList = ([{mind:0, movement: 0, nutrition: 0, world:0, body:0}, {mind:0, movement: 0, nutrition: 0, world:0, body:0},{mind:0, movement: 0, nutrition: 0, world:0, body:0},{mind:0, movement: 0, nutrition: 0, world:0, body:0},{mind:0, movement: 0, nutrition: 0, world:0, body:0}]);
     if($localStorage.rateList == null)
@@ -62,7 +65,7 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
           {
             $state.go('menu.tH5');
           } 
-          if($localStorage.synchronize == 1)
+          if($localStorage.synchronize == true)
           {
               return sync(data.id[0].user_id);            
           }

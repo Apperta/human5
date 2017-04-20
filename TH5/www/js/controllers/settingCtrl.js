@@ -1,7 +1,7 @@
 myapp.controller('settingCtrl', ['$scope', '$state' ,'$localStorage' ,'$stateParams', '$rootScope', 'socialLoginService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $state, $localStorage, $stateParams, $rootScope, socialLoginService) {
+
+    $scope.synchronise = $localStorage.synchronize;
 
 	if($localStorage.userDetails != null)
 	{
@@ -25,6 +25,23 @@ function ($scope, $state, $localStorage, $stateParams, $rootScope, socialLoginSe
 	}else{
 		$scope.users[0].email = $localStorage.localLogin[0].email;
 	}
+
+
+
+
+	$('#settings-toggle1').click(function() 
+	{ 		
+   			if ($scope.synchronise) 
+   			{
+     			 $localStorage.synchronize = false;
+     			 $scope.synchronise = false;
+   			}
+   			else 
+   			{
+      			$localStorage.synchronize = true;
+   				$scope.synchronise = true;
+   			}
+});
 
 
 	$scope.update = function()

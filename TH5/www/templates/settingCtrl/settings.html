@@ -1,9 +1,8 @@
 <ion-view title="Settings" id="page12">
   <ion-content padding="true" class="has-header">
     <form id="settings-form9" class="list">
-      <ion-toggle toggle-class="toggle-positive" id="settings-toggle1">Synchronise With Server</ion-toggle>
+      <ion-toggle toggle-class="toggle-positive" id="settings-toggle1"  ng-checked="{{synchronise}}">Synchronise With Server {{synchronise}}</ion-toggle>
       <div class="spacer" style="width: 300px; height: 247px;"></div>
     </form>
-    <button id="settings-button16" class="button button-balanced  button-block">Change Password</button>
   </ion-content>
 </ion-view>
