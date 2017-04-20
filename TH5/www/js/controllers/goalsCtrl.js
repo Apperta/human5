@@ -10,7 +10,10 @@ function ($scope, $state, $stateParams,$localStorage) {
   if ($localStorage.todolist != null) {
     $scope.todos = $localStorage.todolist;
   }
-  
+
+  $scope.sharedGoals = ([]);
+  if($localStorage.sharedGoals == null)
+    $localStorage.sharedGoals = $scope.sharedGoals;
 
   $scope.types = [
   "World",
@@ -46,10 +49,10 @@ function ($scope, $state, $stateParams,$localStorage) {
 
 
   };
-    if(localStorage.todolist != null)
-    {
-        $scope.selected = $localStorage.todolist[$localStorage.iteratorTodo].type;
-        $scope.deadline = $localStorage.todolist[$localStorage.iteratorTodo].deadline;
+  if(localStorage.todolist != null)
+  {
+    $scope.selected = $localStorage.todolist[$localStorage.iteratorTodo].type;
+    $scope.deadline = $localStorage.todolist[$localStorage.iteratorTodo].deadline;
   }
   $scope.removeTodo = function(todo){
     $scope.todos.splice($scope.todos.indexOf(todo),1);
@@ -57,25 +60,46 @@ function ($scope, $state, $stateParams,$localStorage) {
 
 
 
-    $scope.addTodo = function(){
-      if ($scope.todoText && $scope.todoText!= '') {
-        $scope.todos.push({
-          text:$scope.todoText,
-          done:false
-        });
-        $scope.todoText ='';
-        $localStorage.todolist = $scope.todos;
+  $scope.addTodo = function(){
+    if ($scope.todoText && $scope.todoText!= '') {
+      $scope.todos.push({
+        text:$scope.todoText,
+        done:false
+      });
+      $scope.todoText ='';
+      $localStorage.todolist = $scope.todos;
       console.log("addTodo: " + $localStorage.todolist);
-      }
-    };
+    }
+  };
 
-   $(document).ready(function($) {
+  $(document).ready(function($) {
     $('#datePicker')
-        .datepicker({
-            orientation: 'top left',
-            format: 'mm-dd-yyyy',
-            todayHighlight: true
-        })
+    .datepicker({
+      orientation: 'top left',
+      format: 'mm-dd-yyyy',
+      todayHighlight: true
+    })
+  });
+
+
+   //Group goals
+   $scope.share = function(todo){
+    $.post("http://51.140.39.138:3000/sharedGoals/verify", {goal:todo}, 
+        function( data ) 
+        {
+          
+        },"json"); 
+   }
+
+   $scope.tickAndAdd = function(goal){
+    $scope.sharedGoals.splice($scope.sharedGoals.indexOf(goal),1);
+    $scope.sharedGoals.push({
+      text:$scope.goal.text,
+      done:false,
+      type:$scope.goal.type,
+      deadline:$scope.goal.deadline
     });
+    $localStorage.sharedGoals = $scope.sharedGoals;
+  }
 
 }])
