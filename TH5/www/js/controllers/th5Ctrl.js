@@ -25,6 +25,9 @@ myapp.controller('th5Ctrl', ['$scope', '$state', '$stateParams', '$localStorage'
 
     $(document).ready(function () 
     {
+
+
+
       $( ".button-stable" ).each(function(index) 
       {
         $(this).click(function()

@@ -52,6 +52,8 @@ function ($scope, $state, $localStorage, $stateParams, $rootScope, socialLoginSe
 
 	$scope.logout = function()
 	{
+
+
 		$localStorage.userId = 0;
 		$localStorage.userItems = [{fullname: '', height: '', weight:'', email:'', username:''}];
 		$localStorage.userDetails.imageUrl = "";

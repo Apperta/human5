@@ -15,10 +15,14 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
     $scope.selfRateList = ([{mind:0, movement: 0, nutrition: 0, world:0, body:0}, {mind:0, movement: 0, nutrition: 0, world:0, body:0},{mind:0, movement: 0, nutrition: 0, world:0, body:0},{mind:0, movement: 0, nutrition: 0, world:0, body:0},{mind:0, movement: 0, nutrition: 0, world:0, body:0}]);
     if($localStorage.rateList == null)
       $localStorage.rateList = $scope.selfRateList;
+    else
+      $scope.selfRateList = $localStorage.rateList;
     
     $scope.todos = ([]);
     if($localStorage.todolist == null)
       $localStorage.todolist = $scope.todos;
+    else
+        $scope.todos = $localStorage.todolist;
 
     $scope.users = ([{fullname: '', height: '', weight:'', email:'', username:''}]);
     if ($localStorage.userItems == null)
@@ -27,10 +31,14 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
     $scope.YDC  = ([{val:0},{val:0},{val:0},{val:0},{val:0}]);
     if($localStorage.YDC == null)
       $localStorage.YDC = $scope.YDC;
+    else
+      $scope.YDC = $localStorage.YDC;
 
     $scope.WEMWBS = ([{va1:0,val2:0,val3:0,val4:0,val5:0,val6:0,val7:0},{va1:0,val2:0,val3:0,val4:0,val5:0,val6:0,val7:0},{va1:0,val2:0,val3:0,val4:0,val5:0,val6:0,val7:0},{va1:0,val2:0,val3:0,val4:0,val5:0,val6:0,val7:0},{va1:0,val2:0,val3:0,val4:0,val5:0,val6:0,val7:0}]);
     if($localStorage.WEMWBS == null)
       $localStorage.WEMWBS = $scope.WEMWBS;
+    else
+        $scope.WEMWBS = $localStorage.WEMWBS;
 
 
     $localStorage.localId = 0;
@@ -39,23 +47,27 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
       $localStorage.localLogin = $scope.localLogin;
 
     console.log($localStorage.userId);
-    if($localStorage.userId != 0)
+    if($localStorage.userId != 0 && $localStorage != undefined)
     {
       $.post("http://51.140.39.138:3000/users/verify", {s_id:$localStorage.userId}, 
         function( data ) 
         {
+            console.log($localStorage);
+
           if(data.s_id != -1)
           {
-            $localStorage.userId = data.s_id;
             $state.go('menu.tH5');
-          }
-        },"json"); 
+          } 
+          return sync(data.id[0].user_id);
+        }
+        ,"json");
     }
+
+
 
 
     $scope.loginSubmit = function()
     {
-
       if(!$scope.username.includes("@"))
       {
         $scope.badLogin = false;
@@ -70,7 +82,6 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
           //check if there is login information on user's device
           if ($localStorage.localLogin[0].email == $scope.username) {
             if ($localStorage.localLogin[0].password == $scope.password) {
-              console.log("heyy");
               $scope.username = "";
               $scope.password = "";
               $state.go('menu.tH5');
@@ -94,6 +105,8 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
               if (data.s_id == -1)
               {
                 $localStorage.userId = data.s_id;
+                $localStorage.localLogin.email = $scope.username;
+                $localStorage.localLogin.password =$scope.password;
                 $scope.badLogin = false;
                 $scope.password = "";
               }
@@ -137,50 +150,104 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
         $state.go('menu.tH5');
       });
 
+      function getDate(date)
+     {
+        var result = date;
+        
+        if(date != undefined)
+        {
+            year = date.substring(11,15);
+            var month;
+            day  = date.substring(8,10);
+            time = date.substring(16,24);
 
+            if(date.substring(4,7) == "Jan")
+            month = "01";
+            if(date.substring(4,7) == "Feb")
+            month = "02";
+            if(date.substring(4,7) == "Mar")
+            month = "03";
+            if(date.substring(4,7) == "Apr")
+            month = "04";
+            if(date.substring(4,7) == "May")
+            month = "05";
+            if(date.substring(4,7) == "Jun")
+            month = "06";
+            if(date.substring(4,7) == "Jul")
+            month = "07";
+            if(date.substring(4,7) == "Aug")
+            month = "08";
+            if(date.substring(4,7) == "Sept")
+            month = "09";
+            if(date.substring(4,7) == "Sep")
+            month = "09";
+            if(date.substring(4,7) == "Oct")
+            month = "10";
+            if(date.substring(4,7) == "Nov")
+            month = "11";
+            if(date.substring(4,7) == "Dec")
+            month = "12";
 
-      $scope.sync = function(){
-        $.post("http://51.140.39.138:3000/users/verify", {email:$localStorage.localLogin[0].email}, 
-          function( data ) 
-          {
-            if(data.email != "")
-            {
-              
-            }
-          },"json"); 
+            result = year + "-" + month + "-" + day + " " + time;
+        }
+        return result;
+     }
 
-
+      function sync(userID)
+      {
 
 
         //post data onto server after request for the User id
-        for (var i = $localStorage.selfRateList.length - 1; i >= 0; i--) {
-          $.post("http://51.140.39.138:3000/sync/th5", {mind:$localStorage.selfRateList[i].mind, movement:$localStorage.selfRateList[i].movement, nutrition:$localStorage.selfRateList[i].nutrition, world:$localStorage.selfRateList[i].world, body:$localStorage.selfRateList[i].body}, 
-            function( data ) 
+        for (var i = $scope.selfRateList.length - 1; i >= 0; i--) {
+          $.post("http://51.140.39.138:3000/sync/th5", 
             {
+               user_id    : userID, 
+               val1       :$scope.selfRateList[i].mind,
+               val2       :$scope.selfRateList[i].movement, 
+               val3       :$scope.selfRateList[i].nutrition, 
+               val4       :$scope.selfRateList[i].world, 
+               val5       :$scope.selfRateList[i].body, 
+               date       :getDate($scope.selfRateList[i].date)
 
-            },"json");
+             },"json");
         } 
-        for (var i = $localStorage.YDC.length - 1; i >= 0; i--) {
-          $.post("http://51.140.39.138:3000/sync/stress", {val:$localStorage.YDC[i]}, 
-            function( data ) 
+
+          for (var i = $scope.YDC.length - 1; i >= 0; i--) {
+          $.post("http://51.140.39.138:3000/sync/stress", 
             {
+               user_id    : userID, 
+               val1       :$scope.YDC[i].val,
+               date       :getDate($scope.YDC[i].date)
 
-            },"json");
+             },"json");
         } 
-        for (var i = $localStorage.WEMWBS.length - 1; i >= 0; i--) {
-          $.post("http://51.140.39.138:3000/sync/wemb", {val1:$localStorage.WEMWBS[i].val1,val2:$localStorage.WEMWBS[i].val2,val3:$localStorage.WEMWBS[i].val3,val4:$localStorage.WEMWBS[i].val4,val5:$localStorage.WEMWBS[i].val5,val6:$localStorage.WEMWBS[i].val6,val7:$localStorage.WEMWBS[i].val7}, 
-            function( data ) 
+
+        for (var i = $scope.WEMWBS.length - 1; i >= 0; i--) {
+          $.post("http://51.140.39.138:3000/sync/wemb", 
             {
-
-            },"json");
+               user_id    : userID, 
+               val1       :$scope.WEMWBS[i].val1,
+               val2       :$scope.WEMWBS[i].val2, 
+               val3       :$scope.WEMWBS[i].val3, 
+               val4       :$scope.WEMWBS[i].val4, 
+               val5       :$scope.WEMWBS[i].val5, 
+               val6       :$scope.WEMWBS[i].val6, 
+               val7       :$scope.WEMWBS[i].val7, 
+               date       :getDate($scope.WEMWBS[i].date)
+             },"json");
         } 
-        for (var i = $localStorage.todolist.length - 1; i >= 0; i--) {
-          $.post("http://51.140.39.138:3000/sync/goals", {text:$localStorage.todolist[i].text, done:$localStorage.todolist[i].done, type:$localStorage.todolist[i].type, deadline:$localStorage.todolist[i].deadline}, 
-            function( data ) 
+
+        for (var i = $scope.todos.length - 1; i >= 0; i--) {
+          $.post("http://51.140.39.138:3000/sync/goals", 
             {
+               user_id    : userID, 
+               goal       :$scope.todos[i].goal, 
+               deadline   :$scope.todos[i].deadline, 
+               category   :$scope.WEMWBS[i].category, 
+               date       :getDate($scope.YDC[i].date)
 
-            },"json");
-        } 
+             },"json");
+        }
       }
 
     }])
