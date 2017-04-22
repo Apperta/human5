@@ -89,21 +89,38 @@ function ($scope, $state, $stateParams,$localStorage) {
    //Group goals
    $scope.share = function(todo)
    {
-
+      console.log(todo);
       $.post("http://51.140.39.138:3000/shareGoal",
           {
                  goal       :todo.text, 
                  deadline   :todo.deadline, 
                  category   :todo.type, 
                  date       :getDate(todo.date)
-           },"json"); 
+           },
+           function(data)
+           {
+              console.log(data);
+           }
+           ,"json"); 
      }
 
      
-  $.getJSON("http://51.140.39.138:3000/getGoals", function(data){
-    console.log(data[0]);
+  $.getJSON("http://51.140.39.138:3000/getGoals", function(data)
+  {
+    for ( i=0; i < data.length; i++)
+    {
+      if(data[i].category == "undefined")
+      {
+          data[i].category = ""; 
+      }
+
+      if(data[i].deadline == "0000-00-00")
+      {
+          data[i].deadline = "";
+      }
+          data[i].deadline = data[i].deadline.substring(0,10);
+    }
     $scope.sharedGoals = data;
-    console.log("json:" + $scope.sharedGoals[0]);
     $localStorage.sharedGoals = $scope.sharedGoals;
   });
 

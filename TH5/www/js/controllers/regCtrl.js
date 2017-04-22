@@ -4,6 +4,10 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
   {
     $scope.badLogin = true;
     $localStorage.temp = -1;
+
+    $scope.userDetails = {imageUrl:'', name:'', email:''};
+    if($localStorage.userDetails == null)
+      $localStorage.userDetails = $scope.userDetails;
     
     if($localStorage.iteratorTodo == null)
       $localStorage.iteratorTodo = 0;
@@ -126,12 +130,6 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
 
       $scope.registerSubmit = function()
       {
-      //local register
-      
-        // $localStorage.localLogin.push({
-        //   email:$scope.username,
-        //   password:$scope.password
-        // });
         $localStorage.localLogin[0].email = $scope.username;
         $localStorage.localLogin[0].password = $scope.password;
 
@@ -147,7 +145,6 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
             }
           },"json");
 
-
       }
 
 
@@ -160,8 +157,9 @@ myapp.controller('regCtrl', ['$scope', '$state', '$stateParams','$localStorage',
         $state.go('menu.tH5');
       });
 
+
       function getDate(date)
-     {
+      {
         var result = date;
         
         if(date != undefined)

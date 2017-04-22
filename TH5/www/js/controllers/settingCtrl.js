@@ -14,15 +14,20 @@ function ($scope, $state, $localStorage, $stateParams, $rootScope, socialLoginSe
 	}
 	
 	$scope.users = [{fullname: '', height: '', weight:'', email:'', username:''}];
-	if($localStorage.userItems != null){
+	if($localStorage.userItems != null)
+	{
 		$scope.users = $localStorage.userItems;
 	}
 
 	$scope.users[0].fullname = $localStorage.fullname;
-	if ($localStorage.userDetails.email != "") {
-		$scope.users[0].email = $localStorage.userDetails.email;
 
-	}else{
+
+	if ($localStorage.userDetails.email != null) 
+	{
+		$scope.users[0].email = $localStorage.userDetails.email;
+	}
+	else
+	{
 		$scope.users[0].email = $localStorage.localLogin[0].email;
 	}
 
@@ -46,20 +51,19 @@ function ($scope, $state, $localStorage, $stateParams, $rootScope, socialLoginSe
 
 	$scope.update = function()
 	{
-		if ($scope.users[0].height && $scope.users[0].height != '' ) 
+		if ($scope.users[0].height && $scope.users[0].height != null ) 
 		{
 			$localStorage.userItems[0].height = $scope.users[0].height;
 
 		}
-		if ($scope.users[0].weight && $scope.users[0].weight != '' ) 
+		if ($scope.users[0].weight && $scope.users[0].weight != null ) 
 		{
 			$localStorage.userItems[0].weight = $scope.users[0].weight;
-
 		}
 		$scope.users= $localStorage.userItems;
 	};
 
-	if ($localStorage.userItems[0].height != '' || $localStorage.userItems[0].weight != '') 
+	if ($localStorage.userItems[0].height != null || $localStorage.userItems[0].weight != null) 
 	{
 		$scope.users[0].height = $localStorage.userItems[0].height;
 		$scope.users[0].weight = $localStorage.userItems[0].weight;
@@ -71,12 +75,15 @@ function ($scope, $state, $localStorage, $stateParams, $rootScope, socialLoginSe
 	{
 
 
+		if($localStorage.userDetails != null)
+		{
+			$localStorage.userDetails.imageUrl = "";
+			$localStorage.userDetails.name = "";
+			$localStorage.userDetails.email = "";
+		}
+
 		$localStorage.userId = 0;
 		$localStorage.userItems = [{fullname: '', height: '', weight:'', email:'', username:''}];
-		$localStorage.userDetails.imageUrl = "";
-		$localStorage.userDetails.name = "";
-		$localStorage.userDetails.email = "";
-
     	// socialLoginService.logout();
     	// FB.logout(function(res){ console.log(res); });
     	
