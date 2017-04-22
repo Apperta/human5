@@ -167,7 +167,7 @@ myapp.controller('th5Ctrl', ['$scope', '$state', '$stateParams', '$localStorage'
     var chart = nv.models.lineChart()
                   .margin({left: 20, top:20})
                   .useInteractiveGuideline(true)  
-                  .showLegend(true)       
+                  .showLegend(false)       
                   .showYAxis(false)        
                   .showXAxis(true);        
 
@@ -260,7 +260,7 @@ myapp.controller('th5Ctrl', ['$scope', '$state', '$stateParams', '$localStorage'
             {
               return d3.mouse(this)[0];
             })
-           .attr("y1", "30")
+           .attr("y1", "0")
            .attr("x2", function()
             {
               return d3.mouse(this)[0];
