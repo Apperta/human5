@@ -1,5 +1,3 @@
-# NHS-IBM-The-Human-Five
-
 # The Human Five
 'The Human Five’ is a healthcare and data visualisation mobile-hybrid app that aims to improve the health and mental well-being of the NHS staff by working as a pseudo health assistant.
 
@@ -8,17 +6,17 @@ Our app has a self-rating system that allows the users to themselves across a sp
 Our app has ‘Goal’ creation system helping the user to set aims and work towards fulfillment
 Our app gives ways of visualizing data in a meaningful way (with the help of graphs).
 
-AUTHORS (GROUP 34)
-# Keshav Aggarwal
-# Xunayi Liu
-# Constantin Petrescu
+## AUTHORS (GROUP 34)
+ Keshav Aggarwal
+ Xunayi Liu
+ Constantin Petrescu
 
 ## Setting Up
 
-# GETTING STARTED
+### GETTING STARTED
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-# SETTING UP ENVIRONMENT: INSTALL IONIC
+### SETTING UP ENVIRONMENT: INSTALL IONIC
 To view the project, you need to install ionic framework and cordova. This can be done by making use of npm (Node Package Manager). 
 You need to have the latest version of Node.js installed. In case you don’t, you can install it from here
 
@@ -35,7 +33,7 @@ sudo npm update -g cordova ionic
 
 3. Check the version to see if it is successfully downloaded:
 
-# WORKING WITH THE APPLICATION
+### WORKING WITH THE APPLICATION
 
 1. Download the zip file, unzip it anywhere on your machine
 
@@ -47,5 +45,5 @@ npm install
 4. Start the application in the browser using ionic lab
 ionic serve --lab
 
-# VIEW
+### VIEW
 After properly setting up everything, by using the ionic lab service, a development mode tab will be shown in your default browser. This simulates two general device screens for both iOS and Android.
