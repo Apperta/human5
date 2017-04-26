@@ -8,10 +8,8 @@ function ($scope, $state, $localStorage, $stateParams, $rootScope, socialLoginSe
 		$scope.profilePic = $localStorage.userDetails.imageUrl;
 		$scope.fullname   = $localStorage.userDetails.name;		
 	}
-	if($scope.profilePic == "")
-	{
-		$scope.profilePic = "../img/profilePic.png";
-	}
+	
+	$scope.profilePic = "../img/profilePic.png";
 	
 	$scope.users = [{fullname: '', height: '', weight:'', email:'', username:''}];
 	if($localStorage.userItems != null)
