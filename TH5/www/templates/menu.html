@@ -17,7 +17,8 @@
             </div>
             <div>
                 <h3 id="menu-heading1" style="font-weight:400;text-align:center;">{{fullname}}</h3>
-                <br><br>
+                <br>
+                <br>
             </div>
             <ion-list id="menu-list1">
                 <ion-item class="item-icon-left  side-menu-item" id="menu-list-item1" ui-sref="menu.tH5" menu-close="">
@@ -35,11 +36,91 @@
                 <ion-item class="item-icon-left  side-menu-item" id="menu-list-item4" ui-sref="menu.profile" menu-close="">
                     <i class="icon ion-android-person"></i>Profile
                 </ion-item>
-                <ion-item class="item-icon-left  side-menu-item" id="menu-list-item4"  ng-click="logout()" menu-close="">
-					 <i class="icon ion-log-out"></i>Log Out
+                <ion-item class="item-icon-left  side-menu-item" id="menu-list-item4" ng-click="help()" menu-close="">
+                    <i class="icon ion-help"></i>Help
                 </ion-item>
-			
+                <ion-item class="item-icon-left  side-menu-item" id="menu-list-item4" ng-click="logout()" menu-close="">
+                    <i class="icon ion-log-out"></i>Log Out
+                </ion-item>
             </ion-list>
         </ion-content>
     </ion-side-menu>
+    <div id="modalInfo" class="modal" hidden>
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><b>The Human Five NHS app</b></h4>
+        </div>
+        <div class="modal-body">
+            <p class="just">We think health and wellbeing is all about being the best you can be. It is about staying true to what matters to you. It is about building on your strengths whilst also addressing your needs in a way that works for you.</p>
+            <br>
+            <p class="just">Health and wellbeing is an enormous topic. The Human Five provides a simple framework that can enable you to have control. You can focus on what is most important to you, and take steps to continually optimise your health and wellbeing no matter what.
+                <h1 style="text-align: center;">The Human Five      </h1>
+                <h5 style="text-align: center;">...a universal health and wellbeing model...</h5>
+                <div>
+                    <img src="img/lI1ysetNRRuOsL5hSHts_TheHumanFiveTransparentBackground.png" style="display: block; width: 60%; height: auto; margin-left: auto; margin-right: auto;">
+                </div>
+                <br>
+                <p class="just">Health and wellbeing is an enormous topic. The Human Five provides a simple framework that can enable you to have control. You can focus on what is most important to you, and take steps to continually optimise your health and wellbeing no matter what.
+                    <br>
+                    <p><u>Your <b>Mind</u></b>
+                        <br>
+                        <p class="just">Making the most of your mind every day, and trying to deal with the challenges your mind encounters. This may include your knowledge about your health and your feelings, emotions, beliefs, values.
+                            <p><u>Your <b>Movement </u></b>
+                                <br>
+                                <p class="just">Your body is designed to move to interact with your world (functional movement). There are also great benefits from being physical activity.
+                                    <p><u>Your <b>Nutrition </u></b>
+                                        <br>
+                                        <p class="just">What you eat and drink can be of great benefit to you. Eating “real food” is usually a good idea.
+                                            <p><u>Your <b>World </u></b>
+                                                <br>
+                                                <p class="just">A huge and broad range of topics covering everything to do with you and your world, including for example your relationships and your environment.
+                                                    <p><u>Your <b>Body </u></b>
+                                                        <br>
+                                                        <p class="just">This includes your body parts, how they work. This area also includes sleep. Each of these five areas is linked to all of the other areas.
+                                                            <br>
+
+                                                            <p><b><u>How to use the app</u></b>
+                                                                <br>
+                                                                <br>
+
+                                                                <p class="just">This app is designed to help you to understand your health and wellbeing and what your options are for continual improvement .
+                                                                    <br>
+
+                                                                    <p class="just">When you use the app for the first time you will be prompted to perform a simple Wellbeing Questionnaire. You can repeat this questionnaire as often as you wish and whenever you like. Your score will be recorded for future reference.
+                                                                        <br>
+
+                                                                        <p class="just">You can then move on to recording you Human Five Score. You do this by scoring yourself from 1-5 in each of the five categories Mind/Movement/Nutrition/World/Body.
+                                                                            <br>
+
+                                                                            <p class="just">* A Score of 1 means you think or feel you are experiencing a lot of difficulties or there are a lot of improvements you would like to make.
+                                                                                <br>
+
+                                                                                <p class="just">* A Score of 5 means everything in that category feels just right for you at the moment.
+                                                                                    <br>
+
+                                                                                    <p class="just">The theoretical total top score would be 25. We don’t expect people will often, if ever, score 25 (we haven’t seen it happen yet!). What is important though is you just score yourself at whatever level you feel is about right at that moment in time.
+                                                                                        <br>
+
+                                                                                        <p class="just">Once you have scored yourself in all five areas you will be prompted to consider where you feel you are at that moment on the Performance Curve. Don’t think too much, just tap roughly in the area that relates to what feels about right.
+                                                                                            <br>
+
+                                                                                            <p class="just">Next you can move on to deciding which Score you would like to improve, and you set yourself an achievable Goal in order to improve your Score. This will sometimes be a Goal that you know you will love to do and nothing is going to stop you, or maybe a Goal that is really simple that you can tick off soon, or it could be something that really means a lot to you - something that really matters. It’s worth considering with any Goal you set what will happen to your Human Five Score when you achieve the Goal. The minimum improvement is an increase by one point. No matter how small the goal is if you achieve it we think you deserve a least one point! If you find that you regularly are not able to tick your Goals off we recommend you make some really tiny Goals, and then give yourself a tick!
+                                                                                                <br>
+
+                                                                                                <p class="just">We encourage you to try to Score yourself and set a Goal at least once a week. Many people find they like to set a daily Goal that they can tick off by the end of the day.
+                                                                                                    <br>
+
+                                                                                                    <p class="just">At any time you can review your Scores, your Goals and where you placed yourself on the Performance Curve, as well as your Wellbeing Questionnaire score. It can be helpful or interesting to review this information and see what worked for you and what areas may need some more focus or support.
+                                                                                                        <br>
+
+                                                                                                        <p class="just">The most important part of this app is the complete control you have to score yourself and set your own goals. You are in charge of you! Have fun and enjoy.
+                                                                                                            <br>
+                                                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                                                            <br>
+                                                                                                            <br>
+                                                                                                            <br>
+                                                                                                            <br>
+                                                                                                        </p>
+        </div>
+    </div>
 </ion-side-menus>

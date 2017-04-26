@@ -2,7 +2,7 @@ myapp.controller('settingCtrl', ['$scope', '$state' ,'$localStorage' ,'$statePar
 function ($scope, $state, $localStorage, $stateParams, $rootScope, socialLoginService) {
 
     $scope.synchronise = $localStorage.synchronize;
-
+    $("#modalInfo").hide();
 	if($localStorage.userDetails != null)
 	{
 		$scope.profilePic = $localStorage.userDetails.imageUrl;
@@ -85,24 +85,20 @@ function ($scope, $state, $localStorage, $stateParams, $rootScope, socialLoginSe
 		$localStorage.userId = 0;
 		$localStorage.userItems = [{fullname: '', height: '', weight:'', email:'', username:''}];
     	// socialLoginService.logout();
-    	// FB.logout(function(res){ console.log(res); });
-    	
-    	FB.getLoginStatus(function(response) 
-    	{
-    		if (response && response.status === 'connected') 
-    		{
-    			FB.logout(function(response) 
-    			{
-    				console.log(response);
-    				document.location.reload();
-    			});
-    		}
-    	});
 
 
     	$state.go('login');
     }
 
+    $scope.help = function()
+    {
+		$("#modalInfo").show();    
+    }
+
+    $(".close").click(function()
+	{
+		$("#modalInfo").hide();    
+	});
 
     $rootScope.$on('event:social-sign-out-success', function(event, logoutStatus)
     {

@@ -9,7 +9,6 @@ var myapp = angular.module('app', ['ionic', 'app.routes', 'app.directives','app.
 
 .config(function($ionicConfigProvider, $sceDelegateProvider, socialProvider){
   
-  socialProvider.setFbKey({appId: "728967630605761", apiVersion: "v2.4"});
   $sceDelegateProvider.resourceUrlWhitelist([ 'self','*://www.youtube.com/**', '*://player.vimeo.com/video/**', '*://www.facebook.com/**']);
 
 
